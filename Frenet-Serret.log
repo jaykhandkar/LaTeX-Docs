@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2021.1.13)  13 JAN 2021 20:16
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2021.1.13)  13 JAN 2021 20:21
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -886,7 +886,7 @@ Package rerunfilecheck Info: File `Frenet-Serret.out' has not changed.
 Here is how much of TeX's memory you used:
  21765 strings out of 483183
  435652 string characters out of 5966292
- 727975 words of memory out of 5000000
+ 727974 words of memory out of 5000000
  36344 multiletter control sequences out of 15000+600000
  547307 words of font info for 79 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
@@ -905,7 +905,7 @@ s/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cm
 r5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb><
 /usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/s
 hare/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb>
-Output written on Frenet-Serret.pdf (7 pages, 248326 bytes).
+Output written on Frenet-Serret.pdf (7 pages, 248323 bytes).
 PDF statistics:
  151 PDF objects out of 1000 (max. 8388607)
  123 compressed objects within 2 object streams
