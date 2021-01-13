@@ -1,1 +1,1 @@
-# LaTeX-Docs
+First crack at LaTeX.
