@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2021.1.18)  18 JAN 2021 18:25
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2021.1.18)  18 JAN 2021 18:32
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -855,11 +855,7 @@ LaTeX Font Info:    Overwriting symbol font `ugrf@m' in version `bold'
 )
 Package hyperref Info: Option `colorlinks' set `true' on input line 28.
 
-(./time_domain_analysis.aux
-
-LaTeX Warning: Label `fig:finding_tau_graphically' multiply defined.
-
-)
+(./time_domain_analysis.aux)
 \openout1 = `time_domain_analysis.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 34.
@@ -878,7 +874,8 @@ LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 34.
 LaTeX Font Info:    ... okay on input line 34.
 LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 34.
 LaTeX Font Info:    ... okay on input line 34.
- (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+
+(/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count328
 \scratchdimen=\dimen324
@@ -974,16 +971,12 @@ Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 276.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 276.
 Package rerunfilecheck Info: File `time_domain_analysis.out' has not changed.
 (rerunfilecheck)             Checksum: 49545FA3FB9DA8AC0173B499B571FF6A;379.
-
-
-LaTeX Warning: There were multiply-defined labels.
-
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 276.
  ) 
 Here is how much of TeX's memory you used:
  42468 strings out of 483065
  1108979 string characters out of 5963550
- 1624916 words of memory out of 5000000
+ 1624940 words of memory out of 5000000
  56899 multiletter control sequences out of 15000+600000
  546641 words of font info for 79 fonts, out of 8000000 for 9000
  81 hyphenation exceptions out of 8191
@@ -1000,7 +993,8 @@ ts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type
 s/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/c
 msy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.p
 fb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/euler/eurm10.pfb>
-Output written on time_domain_analysis.pdf (6 pages, 147759 bytes).
+
+Output written on time_domain_analysis.pdf (6 pages, 146480 bytes).
 PDF statistics:
  133 PDF objects out of 1000 (max. 8388607)
  110 compressed objects within 2 object streams
