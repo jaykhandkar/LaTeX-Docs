@@ -1,23 +1,74 @@
 \documentclass{article}
 
+\usepackage{fullpage}
 \usepackage{tikz}
+\usepackage[siunitx, RPvoltages]{circuitikz}
+\usepackage{amsmath}
+\usepackage{hyperref}
+\usepackage{chngcntr}
 
-\title{Time Domain Analysis}
+\counterwithin{figure}{section}
+
+\hypersetup{
+	colorlinks,
+	citecolor=black,
+	filecolor=black,
+	linkcolor=blue,
+	urlcolor=cyan,
+}
+
+\title{\textbf{Time Domain Analysis}}
 \author{Jay Khandkar}
+\date{January 18, 2021}
 
 \begin{document}
 
 \maketitle
 \newpage
+\tableofcontents
+\newpage
 
-\section{Tikz Test}
+\color{blue}
+\section{Current And Voltage Conventions}
+\color{black}
 
-Here is some drawing. Does this text interfere with the drawing?\\
+The conventions we shall follow, simply state that when 
+current "flows into" the positive terminal of the capacitor/inductor, as indicated by the polarity of $v$
+in Fig.\ref{fig:conventions}, it is taken as positive. We may then write
+\begin{align*}
+i &= C\frac{dv}{dt}\\
+v &= L\frac{di}{dt}
+\end{align*}
+
 \begin{figure}[h!]
-	\centering
-	\begin{tikzpicture}
-		\draw (-1.5,0) -- (1.5,0);
-		\draw (0,-1.5) -- (0,1.5);
-	\end{tikzpicture}
+\centering
+\fbox{
+\begin{circuitikz}[american]
+	
+	\draw (0,0) to[short, i=$i$] (1,0) to[C, l=$C$, v_=$v$, o-o, voltage shift=2.5] (2,0) 
+	to[short] (3,0);
+	\draw (0,-2) to[short, i=$i$] (1,-2) to[cute inductor, l=$L$, v^=$v$, o-o, voltage shift=5.0] (2,-2) 		to[short] (3,-2);
+	
+\end{circuitikz}
+}
+\caption{The voltage conventions}
+\label{fig:conventions}	
 \end{figure}
+
+\color{blue}
+\section{First Order Circuits: RL and RC}
+\color{black}
+A first order circuit is one that is governed by a first order differential equation. Often, it is
+incorrectly stated that a first order circuit is one that contains only one energy storage element
+(capacitor/inductor). This is wrong, as there are certain arrangements of $R-L$ and $R-C$ circuits
+which can be simplified to obtain a first order equation, as we shall see later.
+
+\color{blue}
+\subsection{RL Circuits}
+\subsubsection{The Natural Response}
+\color{black}
+A \textbf{\textit{natural response}} is one that is free of any external voltage/current sources, 
+which are also known as \textit{forcing functions}. It depends on the "general nature" of the circuit (types of elements, sizes and interconnections). It is also known as the \textbf{\textit{transient response}}, as without any external sources, it must eventually die out. Consider the simple series RL
+circuit shown in 
+
 \end{document}
