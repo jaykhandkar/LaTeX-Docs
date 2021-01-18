@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2021.1.18)  18 JAN 2021 18:32
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2021.1.18)  18 JAN 2021 19:24
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -964,21 +964,29 @@ c)
 \absvshift=\dimen337
 
 [4] [5] [6]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 276.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 276.
+\realshift=\dimen338
+\alshift=\dimen339
+\absvshift=\dimen340
+\realshift=\dimen341
+\alshift=\dimen342
+\realshift=\dimen343
+\realshift=\dimen344
+ [7]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 290.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 290.
  (./time_domain_analysis.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 276.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 276.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 290.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 290.
 Package rerunfilecheck Info: File `time_domain_analysis.out' has not changed.
 (rerunfilecheck)             Checksum: 49545FA3FB9DA8AC0173B499B571FF6A;379.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 276.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 290.
  ) 
 Here is how much of TeX's memory you used:
- 42468 strings out of 483065
- 1108979 string characters out of 5963550
- 1624940 words of memory out of 5000000
- 56899 multiletter control sequences out of 15000+600000
- 546641 words of font info for 79 fonts, out of 8000000 for 9000
+ 42751 strings out of 483065
+ 1115917 string characters out of 5963550
+ 1625020 words of memory out of 5000000
+ 57177 multiletter control sequences out of 15000+600000
+ 548037 words of font info for 85 fonts, out of 8000000 for 9000
  81 hyphenation exceptions out of 8191
  73i,19n,127p,737b,2433s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></us
@@ -994,10 +1002,10 @@ s/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/c
 msy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.p
 fb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/euler/eurm10.pfb>
 
-Output written on time_domain_analysis.pdf (6 pages, 146480 bytes).
+Output written on time_domain_analysis.pdf (7 pages, 151053 bytes).
 PDF statistics:
- 133 PDF objects out of 1000 (max. 8388607)
- 110 compressed objects within 2 object streams
- 21 named destinations out of 1000 (max. 500000)
+ 141 PDF objects out of 1000 (max. 8388607)
+ 117 compressed objects within 2 object streams
+ 23 named destinations out of 1000 (max. 500000)
  53 words of extra memory for PDF output out of 10000 (max. 10000000)
 

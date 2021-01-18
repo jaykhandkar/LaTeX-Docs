@@ -127,7 +127,7 @@ The power dissipated through the resistor at any time $t$
 p_R = i^{2}R = I_0^{2}Re^{-\frac{2Rt}{L}}
 \end{equation*}
 
-and the total energy turned into heat by the transistor till the response has died out
+and the total energy turned into heat by the resistor till the response has died out
 
 \begin{align*}
 w_R &= \int_{0}^{\infty} p_R\,dt\\
@@ -200,7 +200,7 @@ or
 \end{equation}
 The constant $\uptau$ has the units of seconds and is called the \textbf{time constant} of the circuit.
 It may be found graphically from the response curve by drawing the tangent to the curve at $t=0$ and
-finding where it intersects the y axis, as shown below:
+finding where it intersects the $x$ axis, as shown below:
 
 \begin{figure}[!h]
 \centering
@@ -271,6 +271,20 @@ also be determined from this fact:
 \label{fig:finding_tau_graphically_2}
 \end{figure}
 
+\textbf{Example}: For the cricuit given in figure \ref{fig:example_circuit}, let us try to find the voltage at $t=200ms$.
+\newpage
+\begin{figure}[!h]
+\centering
+\begin{circuitikz}[american]
+	\draw (0,0) to [R=40<\Omega>, v>=$v$, voltage shift=2.5] (0,4) to [short, -*] (2,4)
+				to [opening switch,l=${t=0s}$, o-o] (2,2) to [american voltage source, 
+				v=24<\volt>, o-o, invert] (2,0); 
+	\draw  (2,4) to [R=10<\Omega>] (5,4) to [cute inductor, l=5<\henry>,i=$i_L$] (5,0) to 
+			[short] (0,0);
+\end{circuitikz}
+\caption{Simple R-L circuit for which $i(t)$ is to be determined}
+\label{fig:example_circuit}	
+\end{figure}
 
 \end{flushleft}
 \end{document}
