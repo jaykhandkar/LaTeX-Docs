@@ -9,6 +9,8 @@
 \usepackage{hyperref}
 \usepackage{pgfplots}
 \usepackage{fullpage}
+\usepackage{caption}
+\usepackage{subcaption}
 \usepackage{upgreek}
 
 
@@ -271,7 +273,6 @@ also be determined from this fact:
 \label{fig:finding_tau_graphically_2}
 \end{figure}
 
-\textbf{Example}: For the cricuit given in figure \ref{fig:example_circuit}, let us try to find the voltage at $t=200ms$.
 \newpage
 \begin{figure}[!h]
 \centering
@@ -282,9 +283,62 @@ also be determined from this fact:
 	\draw  (2,4) to [R=10<\Omega>] (5,4) to [cute inductor, l=5<\henry>,i=$i_L$] (5,0) to 
 			[short] (0,0);
 \end{circuitikz}
-\caption{Simple R-L circuit for which $i(t)$ is to be determined}
+\caption{A simple RL circuit with a switch thrown at $t=0$}
 \label{fig:example_circuit}	
 \end{figure}
+\textbf{Example}: For the circuit given in figure \ref{fig:example_circuit}, let us try to find the voltage at $t=200ms$.
+
+Figures \ref{fig:prior_t_0} and \ref{fig:post_t_0} show the state of the circuit prior to and post the 
+throwing of the switch. In \ref{fig:prior_t_0}, the inductor acts like a short to DC current after all transients have died down.
+
+\begin{figure}[!h]
+\centering
+\begin{subfigure}{.5\textwidth}
+  \centering
+  
+  \begin{circuitikz}[american]
+	\draw (0,0) to [R=40<\Omega>, v>=$v$, voltage shift=2.5] (0,4) to [short, -*] (2,4)
+				to [american voltage source, v=24<\volt>, o-o, invert] (2,0); 
+	\draw  (2,4) to [R=10<\Omega>] (5,4) to [short, i=$i_L$] (5,0) to 
+			[short] (0,0);
+  \end{circuitikz}
+  
+  \caption{The circuit prior to $t=0$}
+  \label{fig:prior_t_0}
+\end{subfigure}%
+\begin{subfigure}{.5\textwidth}
+  \centering
+  
+  \begin{circuitikz}[american]
+	\draw  (0,0) to [R=40<\Omega>, v>=$v$, voltage shift=2.5] (0,4) to [R=10<\Omega>] (5,4) to 
+				[cute inductor,l=5<\henry>,i=$i_L$] (5,0) to [short] (0,0);
+  \end{circuitikz}
+  
+  \caption{The circuit post $t=0$}
+  \label{fig:post_t_0}
+\end{subfigure}
+\caption{The simplified circuit before and after the switch is opened}
+\label{fig:test}
+\end{figure}
+
+Applying Kirchhoff's Law in \ref{fig:post_t_0}, we may write 
+
+\begin{align*}
+-v + 10i_L + 5\frac{di_l}{dt} &= 0\\
+\Rightarrow \frac{5}{40}\frac{dv}{dt} + \left(\frac{10}{40}+1\right)v &= 0\\
+\Rightarrow \frac{dv}{dt} + 10v &= 0
+\end{align*}
+where we have taken $i_l = -v/40$ by our conventions. The solution to this differential equation is
+\begin{equation*}
+v(t) = v(0^{+})e^{-10t}
+\end{equation*}
+Note that the initial value of voltage here is denoted by $v(0^{+})$, as the voltage across the resistor 
+may change discontinuously when the switch is thrown. We have to use the fact that $i_L$ cannot change discontinuously, and remains the same just before and just after the switch is thrown. From \ref{fig:prior_t_0}, $i_l(0) = 24/10 = 2.4\text{A}$. Hence, $v(0^{+}) = (40)\cdot(-2.4)=-96\text{V}$, and
+so
+\begin{equation*}
+\boxed{v(t) = -96e^{-10t}}
+\end{equation*}
+which gives $v(0.2) = -12.99\text{V}$.
 
 \end{flushleft}
 \end{document}

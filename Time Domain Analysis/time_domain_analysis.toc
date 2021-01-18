@@ -2,5 +2,5 @@
 \contentsline {section}{\numberline {2}First Order Circuits: RL and RC}{3}{section.2}%
 \contentsline {subsection}{\numberline {2.1}The Natural Response}{3}{subsection.2.1}%
 \contentsline {subsubsection}{\numberline {2.1.1}The Source-Free RL Circuit}{3}{subsubsection.2.1.1}%
-\contentsline {paragraph}{\color {blue}Accounting For The Energy}{4}{section*.2}%
+\contentsline {paragraph}{\color {blue}Accounting For The Energy}{4}{section*.4}%
 \contentsline {subsubsection}{\numberline {2.1.2}Properties Of The Natural Response}{5}{subsubsection.2.1.2}%
