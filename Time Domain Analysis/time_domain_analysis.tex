@@ -50,7 +50,7 @@
 \section{Current And Voltage Conventions}
 \color{black}
 
-The conventions we shall follow simply state that when 
+The conventions we shall follow, called \textit{\textbf{passive sign conventions}}, simply state that when 
 current ``flows into" the positive terminal of the capacitor/inductor, as indicated by the polarity of $v$
 in Fig.\ref{fig:conventions}, it is taken as positive. We may then write the current-voltage relations:
 
@@ -89,7 +89,9 @@ it to be first order.
 \subsubsection{The Source-Free RL Circuit}
 \color{black}
 A \textbf{\textit{natural response}} is one that is free of any external voltage/current sources, 
-which are also known as \textit{forcing functions}. It depends on the ``general nature" of the circuit (types of elements, sizes and interconnections). It is also known as the \textbf{\textit{transient response}}, as without any external sources, it must eventually die out. Consider the simple series RL
+which are also known as \textit{forcing functions}. It depends on the ``general nature" of the circuit
+(types of elements, sizes and interconnections). It is also known as the \textbf{\textit{transient
+response}}, as without any external sources, it must eventually die out. Consider the simple series RL
 circuit shown in Fig.\ref{fig:src_free_RL}:
 \newpage
 \begin{figure}[!h]
@@ -104,7 +106,9 @@ circuit shown in Fig.\ref{fig:src_free_RL}:
 
 Let the time varying current be designated $i(t)$, and the value of $i$ at $t=0$ be $I_0$. It may seem 
 counter-intuitive to have a non-zero current initially in a circuit with no sources. In order 
-for a current to be flowing, a source had to be present at some point of time, but we are only bothered with the response of the circuit after $t=0$, ie. after the source has been removed. Applying Kirchhoff's
+for a current to be flowing, a source had to be present at some point of time, but we are only 
+bothered with the response of the circuit after $t=0$, 
+ie. after the source has been removed. Applying Kirchhoff's
 voltage law, we have
 \begin{equation*}
 Ri + v_L = Ri + L\frac{di}{dt} = 0 
@@ -341,7 +345,9 @@ where we have taken $i_l = -v/40$ by our conventions. The solution to this diffe
 v(t) = v(0^{+})e^{-10t}
 \end{equation*}
 Note that the initial value of voltage here is denoted by $v(0^{+})$, as the voltage across the resistor 
-may change discontinuously when the switch is thrown. We have to use the fact that $i_L$ cannot change discontinuously, and remains the same just before and just after the switch is thrown. From \ref{fig:prior_t_0}, $i_l(0) = 24/10 = 2.4\text{A}$. Hence, $v(0^{+}) = (40)\cdot(-2.4)=-96\text{V}$, and
+may change discontinuously when the switch is thrown. We have to use the fact that $i_L$ cannot 
+change discontinuously, and remains the same just before and just after the switch is 
+thrown. From \ref{fig:prior_t_0}, $i_l(0) = 24/10 = 2.4\text{A}$. Hence, $v(0^{+}) = (40)\cdot(-2.4)=-96\text{V}$, and
 so
 \begin{equation*}
 \boxed{v(t) = -96e^{-10t}}
