@@ -288,7 +288,7 @@ also be determined from this fact:
 \newpage
 \begin{figure}[!h]
 \centering
-\begin{circuitikz}[american]
+\begin{circuitikz}[american, scale=0.9, transform shape]
 	\draw (0,0) to [R=40<\Omega>, v>=$v$, voltage shift=2.5] (0,4) to [short, -*] (2,4)
 				to [opening switch,l=${t=0s}$, o-o] (2,2) to [american voltage source, 
 				v=24<\volt>, o-o, invert] (2,0); 
@@ -298,7 +298,7 @@ also be determined from this fact:
 \caption{A simple RL circuit with a switch thrown at $t=0$}
 \label{fig:example_circuit}	
 \end{figure}
-\textbf{Example}: For the circuit given in figure \ref{fig:example_circuit}, let us try to find the voltage at $t=200ms$.
+\textbf{Example}: For the circuit given in figure \ref{fig:example_circuit}, let us try to find the voltage at $t=200ms$.\\~\\
 
 Figures \ref{fig:prior_t_0} and \ref{fig:post_t_0} show the state of the circuit prior to and post the 
 throwing of the switch. In \ref{fig:prior_t_0}, the inductor acts like a short to DC current after all transients have died down.
@@ -308,7 +308,7 @@ throwing of the switch. In \ref{fig:prior_t_0}, the inductor acts like a short t
 \begin{subfigure}{.5\textwidth}
   \centering
   
-  \begin{circuitikz}[american]
+  \begin{circuitikz}[american, scale=0.9, transform shape]
 	\draw (0,0) to [R=40<\Omega>, v>=$v$, voltage shift=2.5] (0,4) to [short, -*] (2,4)
 				to [american voltage source, v=24<\volt>, o-o, invert] (2,0); 
 	\draw  (2,4) to [R=10<\Omega>] (5,4) to [short, i=$i_L$] (5,0) to 
@@ -321,7 +321,7 @@ throwing of the switch. In \ref{fig:prior_t_0}, the inductor acts like a short t
 \begin{subfigure}{.5\textwidth}
   \centering
   
-  \begin{circuitikz}[american]
+  \begin{circuitikz}[american, scale=0.9, transform shape]
 	\draw  (0,0) to [R=40<\Omega>, v>=$v$, voltage shift=2.5] (0,4) to [R=10<\Omega>] (5,4) to 
 				[cute inductor,l=5<\henry>,i=$i_L$] (5,0) to [short] (0,0);
   \end{circuitikz}
@@ -330,7 +330,7 @@ throwing of the switch. In \ref{fig:prior_t_0}, the inductor acts like a short t
   \label{fig:post_t_0}
 \end{subfigure}
 \caption{The simplified circuit before and after the switch is opened}
-\label{fig:test}
+\label{fig:example_1}
 \end{figure}
 
 Applying Kirchhoff's Law in \ref{fig:post_t_0}, we may write 
@@ -357,6 +357,117 @@ which gives $v(0.2) = -12.99\text{V}$.
 \color{blue}
 \subsubsection{The Source-Free RC Circuit}
 \color{black}
+
+\begin{figure}[!h]
+\centering
+\begin{circuitikz}[american]
+	\draw (0,0) to [R=$R$, v>=$v_R$, voltage shift=2.5] (0,3) to [short, i=$i(t)$] (3,3)
+			to [C, l=$C$, v=$v_C$, voltage shift=1.5] (3,0) to [short] (0,0); 
+\end{circuitikz}
+\caption{Source-Free RC Circuit}
+\label{fig:src_free_RC}	
+\end{figure}
+The source free response for RC circuits is nearly the same as with LC, but with slightly different 
+expressions for the time constant. In this case, the general form of the response is given by
+
+\begin{equation}
+\boxed{v(t) = v(0)e^{-\frac{t}{\uptau}}}
+\end{equation}
+
+and the expression for the time constant is
+
+\begin{equation}
+\boxed{\uptau = R \cdot C}
+\end{equation}
+
+It may also be noted that the voltage across a capacitor cannot change discontinuously, as opposed to
+the current for an inductor.
+
+\color{blue}
+\subsubsection{General RL and RC Circuits}
+\color{black}
+
+For circuits containing more than one capacitor/inductor and more than one resistor, it is possible
+to arrive at a single time constant and reduce it to a simple circuit with one resistor and one
+energy storage element, as long as the Th\'{e}venin resistance ``seen" by all the elements is the same.
+In such a case, we can write $\uptau = \frac{L_{eq}}{R_{eq}}$ or $\uptau = R_{eq} \cdot C_{eq}$.
+The general form of the natural response would then be $Ae^{-t/\uptau}$, where the constant A 
+can be determined using the initial conditions, and would be different for different elements.
+Let us illustrate this using the following example:\\
+\newpage
+
+
+\begin{figure}[!h]
+\centering
+\begin{subfigure}{.5\textwidth}
+  \centering
+  
+  \begin{circuitikz}[american, scale=0.65, transform shape]
+	\draw (0,0) -- (0,5) to [R=120<\Omega>] (4,5) to [R=60<\Omega>] (4,3) to [cute inductor,
+		l=1<\milli\henry>, i=$i_L$] (8,3) to [R=50<\Omega>] (9,3) to [short, -*] (10,3)to[cute inductor,
+		l=2<\milli\henry>] (10,0)to [short, -*](10,0) to [short] (0,0);
+	\draw (10,3) -- (12,3) to [cute inductor, l=3<\milli\henry>] (12,0) to [short, -*] (4,0)
+		to [R, l_=$90\Omega$,i_<=$i_1$] (4,3) to [short, -*] (4,3) to [opening switch,l=${t=0s}$, *-*] (2,3)
+		to [american voltage source, v=18<\volt>, *-*, invert] (2,0);
+  \end{circuitikz}
+  
+  \caption{The circuit with multiple inductors and resistors}
+  \label{fig:example_circ_2}
+\end{subfigure}%
+\begin{subfigure}{.5\textwidth}
+  \centering
+  
+ \begin{circuitikz}[american, scale=0.65, transform shape]
+	\draw (0,0) -- (0,5) to [R=120<\Omega>] (2,5) to [R=60<\Omega>] (2,3) to [cute inductor,
+		l=1<\milli\henry>, i=$i_L$] (6,3) to [R=50<\Omega>] (7,3) to [short, -*] (8,3)to[cute inductor,
+		l=2<\milli\henry>] (8,0)to [short, -*](8,0) to [short] (0,0);
+	\draw (8,3) -- (10,3) to [cute inductor, l=3<\milli\henry>] (10,0) to [short, -*] (2,0)
+		to [R, l_=$90\Omega$,i<=$i_1$] (2,3)to [short, -*] (2,3);
+  \end{circuitikz}
+  
+  \caption{The simplified circuit after $t=0$}
+  \label{fig:simplified_circ_2}
+\end{subfigure}
+\label{fig:example_2}
+\end{figure}
+
+\textbf{Example:} For the circuit given in figure \ref{fig:example_circ_2} find $i_1$ and $i_L$ for 
+$t>0$.\\~\\
+Firstly, note that the equivalent/Th\'{e}venin resistance seen by all three inductances is equal, and equal
+to $50 + 90||(120 + 60) =110\Omega$. So, we can reduce it to a simple LR circuit, with
+
+\begin{align*}
+L_{eq} &= \frac{2 \cdot 3}{2+3} + 1 = 2.2 mH\\
+\Rightarrow \uptau &= \frac{L_{eq}}{R_{eq}} = 20\mu s 
+\end{align*}
+And so every current and voltage in the network must have the form $Ke^{-t/\uptau}=Ke^{-50,000t}$.
+If we consider the circuit prior to opening the switch and after all transients have died down, the
+inductors act as shorts to DC current and so $i_L$ is easily found to be $i_L = 18/50 = 360mA$. This must
+also be the value of $i_L$ just after the switch is opened. So,
+
+\begin{equation*}
+i_L = \begin{cases} 
+          360 mA & t < 0 \\
+          360e^{-50,000t} mA & 0\leq t 
+       \end{cases}
+\end{equation*}
+
+Now, $i_1$ may change discontiuously at $t=0$ so we have to find it's value at $0^{+}$ using the value of
+$i_L(0^+)$. Using current division,
+
+\begin{equation*}
+i_1(0^+) = -i_L(0^+) \cdot \frac{120+60}{120+60+90} = -240 mA
+\end{equation*}
+
+Hence,
+
+\begin{equation*}
+i_1 = \begin{cases} 
+          200 mA & t < 0 \\
+          -240e^{-50,000t} mA & 0\leq t 
+       \end{cases}
+\end{equation*}
+
 
 \end{flushleft}
 \end{document}
