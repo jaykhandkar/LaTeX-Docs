@@ -3,11 +3,13 @@
 \usepackage{amsmath}
 \usepackage{amsfonts}
 \usepackage{amssymb}
-\usepackage{xcolor}
+\usepackage{float}
+\usepackage[dvipsnames]{xcolor}
 \usepackage{graphicx}
 \usepackage[siunitx, RPvoltages]{circuitikz}
 \usepackage{empheq}
 \usepackage{hyperref}
+\usepackage{tcolorbox}
 \usepackage{pgfplots}
 \usepackage{caption}
 \usepackage{subcaption}
@@ -15,6 +17,7 @@
 \usepackage[margin=1in,headheight=13.6pt]{geometry}
 \usepackage{fancyhdr}
 
+\tcbuselibrary{breakable}
 \pagestyle{fancy}
 \fancyhf{}
 \lhead{\fontsize{14}{15} \selectfont Time Domain Analysis}
@@ -155,6 +158,7 @@ which is the total energy stored initially in the inductor, as expected.
 
 \begin{figure}[!h]
 \centering
+\begin{tcolorbox}[colframe=black, hbox]
 \begin{tikzpicture}
 \begin{axis}[
 	legend pos = north east,
@@ -190,8 +194,9 @@ which is the total energy stored initially in the inductor, as expected.
 
 \end{axis}
 \end{tikzpicture}
-\caption{Some possible plots for the natural response}
 \label{fig:nat_resp}
+\end{tcolorbox}
+\caption{Some possible plots for the natural response}
 \end{figure}
 
 From the natural response of the series RL circuit given by Eq.\ref{equation:rl_nat_resp}, it is clear that
@@ -216,8 +221,10 @@ The constant $\uptau$ has the units of seconds and is called the \textbf{time co
 It may be found graphically from the response curve by drawing the tangent to the curve at $t=0$ and
 finding where it intersects the $x$ axis, as shown below:
 
-\begin{figure}[!h]
+
+\begin{figure}[H]
 \centering
+\begin{tcolorbox}[colframe=black, hbox]
 \begin{tikzpicture}
 \begin{axis}[
 	ytick={1}, xtick={0,2},
@@ -244,9 +251,11 @@ finding where it intersects the $x$ axis, as shown below:
 
 \end{axis}
 \end{tikzpicture}
-\caption{Finding the time constant graphically}
 \label{fig:finding_tau_graphically}
+\end{tcolorbox}
+\caption{Finding the time constant graphically}
 \end{figure}
+
 
 Yet another way to define the time constant is to note that
 \begin{equation*}
@@ -255,8 +264,10 @@ Yet another way to define the time constant is to note that
 ie, in one time constant, the response falls to $36.8\%$ of it's initial value. The value of $\uptau$ may
 also be determined from this fact:
 
-\begin{figure}[!h]
+
+\begin{figure}[H]
 \centering
+\begin{tcolorbox}[colframe=black, hbox]
 \begin{tikzpicture}
 \begin{axis}[
 	ytick={0.1353,0.3679,1}, xticklabels={0, $\uptau$, $2\uptau$},xtick={0,2,4},
@@ -283,10 +294,13 @@ also be determined from this fact:
 \end{axis}
 \end{tikzpicture}
 \label{fig:finding_tau_graphically_2}
+\end{tcolorbox}
 \end{figure}
 
 \newpage
-\begin{figure}[!h]
+
+\begin{tcolorbox}[colback=blue!5, colframe=blue!75!black, title=\textbf{Example 2.1}, breakable]
+\begin{figure}[H]
 \centering
 \begin{circuitikz}[american, scale=0.9, transform shape]
 	\draw (0,0) to [R=40<\Omega>, v>=$v$, voltage shift=2.5] (0,4) to [short, -*] (2,4)
@@ -298,16 +312,18 @@ also be determined from this fact:
 \caption{A simple RL circuit with a switch thrown at $t=0$}
 \label{fig:example_circuit}	
 \end{figure}
-\textbf{Example}: For the circuit given in figure \ref{fig:example_circuit}, let us try to find the voltage at $t=200ms$.\\~\\
+
+For the circuit given in figure \ref{fig:example_circuit}, let us try to find the voltage at 
+$t=200ms$.\\~\\
 
 Figures \ref{fig:prior_t_0} and \ref{fig:post_t_0} show the state of the circuit prior to and post the 
 throwing of the switch. In \ref{fig:prior_t_0}, the inductor acts like a short to DC current after all transients have died down.
 
-\begin{figure}[!h]
+\begin{figure}[H]
 \centering
 \begin{subfigure}{.5\textwidth}
   \centering
-  
+
   \begin{circuitikz}[american, scale=0.9, transform shape]
 	\draw (0,0) to [R=40<\Omega>, v>=$v$, voltage shift=2.5] (0,4) to [short, -*] (2,4)
 				to [american voltage source, v=24<\volt>, o-o, invert] (2,0); 
@@ -333,6 +349,7 @@ throwing of the switch. In \ref{fig:prior_t_0}, the inductor acts like a short t
 \label{fig:example_1}
 \end{figure}
 
+
 Applying Kirchhoff's Law in \ref{fig:post_t_0}, we may write 
 
 \begin{align*}
@@ -344,6 +361,9 @@ where we have taken $i_l = -v/40$ by our conventions. The solution to this diffe
 \begin{equation*}
 v(t) = v(0^{+})e^{-10t}
 \end{equation*}
+%\end{tcolorbox}
+
+%\begin{tcolorbox}[colback=red!5, colframe=red!75!black]
 Note that the initial value of voltage here is denoted by $v(0^{+})$, as the voltage across the resistor 
 may change discontinuously when the switch is thrown. We have to use the fact that $i_L$ cannot 
 change discontinuously, and remains the same just before and just after the switch is 
@@ -353,6 +373,8 @@ so
 \boxed{v(t) = -96e^{-10t}}
 \end{equation*}
 which gives $v(0.2) = -12.99\text{V}$.
+\end{tcolorbox}
+%{\color{red} \rule{\linewidth}{0.5mm}}
 
 \color{blue}
 \subsubsection{The Source-Free RC Circuit}
@@ -393,16 +415,15 @@ energy storage element, as long as the Th\'{e}venin resistance ``seen" by all th
 In such a case, we can write $\uptau = \frac{L_{eq}}{R_{eq}}$ or $\uptau = R_{eq} \cdot C_{eq}$.
 The general form of the natural response would then be $Ae^{-t/\uptau}$, where the constant A 
 can be determined using the initial conditions, and would be different for different elements.
-Let us illustrate this using the following example:\\
-\newpage
+Let us illustrate this using the following example:\\~\\
 
-
-\begin{figure}[!h]
+\begin{tcolorbox}[colback=blue!5, colframe=blue!75!black, title=\textbf{Example 2.2}, breakable]
+\begin{figure}[H]
 \centering
 \begin{subfigure}{.5\textwidth}
   \centering
   
-  \begin{circuitikz}[american, scale=0.65, transform shape]
+  \begin{circuitikz}[american, scale=0.6, transform shape]
 	\draw (0,0) -- (0,5) to [R=120<\Omega>] (4,5) to [R=60<\Omega>] (4,3) to [cute inductor,
 		l=1<\milli\henry>, i=$i_L$] (8,3) to [R=50<\Omega>] (9,3) to [short, -*] (10,3)to[cute inductor,
 		l=2<\milli\henry>] (10,0)to [short, -*](10,0) to [short] (0,0);
@@ -417,7 +438,7 @@ Let us illustrate this using the following example:\\
 \begin{subfigure}{.5\textwidth}
   \centering
   
- \begin{circuitikz}[american, scale=0.65, transform shape]
+ \begin{circuitikz}[american, scale=0.6, transform shape]
 	\draw (0,0) -- (0,5) to [R=120<\Omega>] (2,5) to [R=60<\Omega>] (2,3) to [cute inductor,
 		l=1<\milli\henry>, i=$i_L$] (6,3) to [R=50<\Omega>] (7,3) to [short, -*] (8,3)to[cute inductor,
 		l=2<\milli\henry>] (8,0)to [short, -*](8,0) to [short] (0,0);
@@ -431,8 +452,10 @@ Let us illustrate this using the following example:\\
 \label{fig:example_2}
 \end{figure}
 
-\textbf{Example:} For the circuit given in figure \ref{fig:example_circ_2} find $i_1$ and $i_L$ for 
+For the circuit given in figure \ref{fig:example_circ_2} find $i_1$ and $i_L$ for 
 $t>0$.\\~\\
+
+
 Firstly, note that the equivalent/Th\'{e}venin resistance seen by all three inductances is equal, and equal
 to $50 + 90||(120 + 60) =110\Omega$. So, we can reduce it to a simple LR circuit, with
 
@@ -467,7 +490,7 @@ i_1 = \begin{cases}
           -240e^{-50,000t} mA & 0\leq t 
        \end{cases}
 \end{equation*}
-
+\end{tcolorbox}
 
 \end{flushleft}
 \end{document}
