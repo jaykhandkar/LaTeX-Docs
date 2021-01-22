@@ -664,7 +664,7 @@ the pulse given by
 \begin{equation*}
 v(t) = \begin{cases} 
           0 & t < t_0 \\
-          V-0  & t_0 < t < t_1\\
+          V_0  & t_0 < t < t_1\\
           0 & t > t_1 
        \end{cases}
 \end{equation*}
@@ -850,6 +850,123 @@ i(t) = \frac{V_0}{R}(1-e^{-Rt/L})u(t)
  
  The response is plotted in figure , and it is clear how $i$ rises from it's intial value of $0$ to it's forced value of $\frac{V_0}{R}$. In this 
  case, a tangent drawn to the response curve at $t=0$ meets the forced response at $t=\uptau$.
- 
+ \begin{tcolorbox}
+ \begin{figure}[H]
+	\centering
+  \begin{tikzpicture}
+	\begin{axis}[
+        axis lines = middle,
+		yticklabels= {$0.632V_0/R$, $V_0/R$}, ytick = {0.632*2,2}, xticklabels={0, $\uptau$,$2\uptau$,$3\uptau$},xtick={0,1,2,3},
+		x label style = {at={(axis description cs:1,0.117)},anchor=west},
+		y label style = {at={(axis description cs:0.0909,1)},anchor=south},
+    	xlabel = $t$,
+    	ylabel = {$i(t)$},
+   	 ymin = -0.4, ymax = 3,
+   	 xmin=-0.5, xmax=5
+	]
+
+	\addplot [
+    	domain=0:5, 
+    	samples=100, 
+    	color=red, smooth
+	]
+	{2*(1-exp(-x))};
+	\addplot [
+    	domain=0:1.2, 
+    	samples=100, 
+    	dashed,smooth
+	]
+	{2*x};
+	\addplot[dashed, gray, very thin] coordinates {(0, 0.632*2) (1,0.632*2)};
+	\addplot[dashed, gray, very thin] coordinates {(1,2) (1,0)};
+	\addplot[dashed, gray, very thin] coordinates {(0,2) (4,2)};
+
+	%following code is just a way to label zero for middle axis
+	\node[
+    anchor=north east,
+    outer sep=.5*\pgflinewidth+.5*\pgfkeysvalueof{/pgfplots/major tick length},
+    %draw,green% to show the border of the node
+    ]
+    at({xticklabel* cs:0}-|{yticklabel* cs:0})
+    {\pgfmathprintnumber{0}};
+	\end{axis}
+	\end{tikzpicture}
+  \caption{The plot of $i(t)$}
+  \label{fig:forced_RC_plot}
+\end{figure}%
+\end{tcolorbox}
+
+The procedure to find the forced response for driven RC circuits is exactly the same as that for RL circuits. We won't repeat it here, but will
+instead illustrate it with the following example:\\~\\
+
+\begin{tcolorbox}[colback=blue!5, colframe=blue!75!black, title=\textbf{Example 2.3}, breakable]
+
+Determine an expression for $v(t)$ in the circuit of figure \ref{fig:example_2.3} valid for $t>0$.
+
+\begin{figure}[H]
+    \centering
+    \begin{circuitikz}[american]
+        \draw (0,0) to [dcisource, fill=yellow, l=$5e^{-2000t}A$] (0,3)-- (2,3) to [R=10<\Omega>] (5,3) to 
+                [C=22<\micro \farad>, voltage shift=2.5,v=$v$] (5,0) -- (0,0);
+        \draw (2,3) to [short, -*] (2,3) to [R=4.7<\Omega>] (2,0) to [short, -*] (2,0);
+    \end{circuitikz}
+    \caption{An RC circuit forced by an exponentially decaying function}
+    \label{fig:example_2.3}
+\end{figure}
+
+We expect a complete response of the form
+\begin{equation*}
+v(t) = v_f + v_n
+\end{equation*}
+
+Where $v_n$ is of the form $Ae^{it/\uptau}$ and $v_f$ is reminiscent of the exponential forcing function. To calculate the time constant for this
+circuit, note that the The\'{e}venin resistance across the capacitor is
+\begin{equation*}
+ R_{eq} = 4.7 + 10 = 14.7\Omega
+\end{equation*}
+and hence our time constant is $\uptau = R_{eq} \cdot C = 323.4 \mu s$. At this point, it will be convenient to perform a source transformation
+resulting in a voltage source $23.5e^{-2000t}$ in series with $14.7\Omega$ and $22 \mu F$. Applying Kirchhoff's loop law,
+
+\begin{align*}
+23.5e^{-2000t} &= (14.7)(22\cdot 10^{-6})\frac{dv}{dt} + v\\
+\Rightarrow \frac{dv}{dt} + (3.092\cdot 10^{3})v &= 72.67\cdot 10^{3}e^{-2000t}
+\end{align*}
+Comparing this with the standard solution to a first order non-homogenous linear equation
+
+\begin{equation*}
+v(t) = e^{-Pt}\int Qe^{Pt}\, dt + Ae^{-Pt}
+\end{equation*}
+
+we find that $P=1/\uptau=3.092\cdot 10^{3}$ and $Q(t)=72.67\cdot 10^{3}e^{-2000t}$ and after performing the necessary integration, we get
+
+\begin{equation*}
+ v(t) = 66.55e^{-2000t} + Ae^{-3092}
+\end{equation*}
+and since the voltage across a capacitor cannot change discontinuously with time, our initial conditions are $v(0^-)=v(0^+)=0$. Incorporating
+these into our response, finally we get
+\begin{equation*}
+ v(t) = 66.55e^{-2000t}(1 - e^{-3092})V 
+\end{equation*}
+
+for $t>0s$. Is this expected? We have one term of the form $e^{-2000t}$, our forcing function and one term of the form $e^{-3092}$, our natural
+response, and so everything checks out.
+
+\end{tcolorbox}
+
+The methods of finding a response for a forced circuit are summarised neatly below:\\~\\
+
+\begin{tcolorbox}[arc=0mm]
+ \begin{enumerate}
+  \item With all independent sources zeroed out, simplify the circuit to determine $R_{eq}$, $C_{eq}$ and the time constant $\uptau=R_{eq}\cdot C_{eq}$
+  \item Viewing $C_{eq}$ as an open circuit, find $v_c(0^-)$, the capacitor voltage prior to the discontinuity.
+  \item Viewing $C_{eq}$ as an open circuit, find the forced response $f(\infty)$
+  \item Write the total response as a sum of forced and natural responses: $f(t) = f(\infty)+Ae^{-t/\uptau}$.
+  \item Find $f(0^+)$ using the fact that the capacitor voltage may not change discontinuously, ie. $v_c(0^+)=v_c(0^-)$.
+  \item Apply this initial condition $f(0^+)$ to find the value of $A$, and hence the complete response.
+ \end{enumerate}
+\end{tcolorbox}
+
+The method to find the complete response for an LR circuit is, of course, the dual of the statements listed above.
+
 \end{flushleft}
 \end{document}
