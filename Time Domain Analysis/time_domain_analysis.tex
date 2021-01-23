@@ -1,4 +1,4 @@
-\documentclass[12pt]{article}
+\documentclass[11pt]{article}
 
 \usepackage{amsmath}
 \usepackage{amsfonts}
@@ -24,6 +24,22 @@
 \lhead{\fontsize{14}{15} \selectfont Time Domain Analysis}
 \rfoot{Page \thepage}
 
+\tikzset{
+  declare function={% in case of CVS which switches the arguments of atan2
+    atan3(\a,\b)=ifthenelse(atan2(0,1)==90, atan2(\a,\b), atan2(\b,\a));},
+  kinky cross radius/.initial=+.125cm,
+  @kinky cross/.initial=+, kinky crosses/.is choice,
+  kinky crosses/left/.style={@kinky cross=-},kinky crosses/right/.style={@kinky cross=+},
+  kinky cross/.style args={(#1)--(#2)}{
+    to path={
+      let \p{@kc@}=($(\tikztotarget)-(\tikztostart)$),
+          \n{@kc@}={atan3(\p{@kc@})+180} in
+      -- ($(intersection of \tikztostart--{\tikztotarget} and #1--#2)!%
+             \pgfkeysvalueof{/tikz/kinky cross radius}!(\tikztostart)$)
+      arc [ radius     =\pgfkeysvalueof{/tikz/kinky cross radius},
+            start angle=\n{@kc@},
+            delta angle=\pgfkeysvalueof{/tikz/@kinky cross}180 ]
+      -- (\tikztotarget)}}}
 \pgfplotsset{width=7cm, compat=1.16}
 
 \counterwithin{figure}{section}
@@ -669,7 +685,7 @@ v(t) = \begin{cases}
        \end{cases}
 \end{equation*}
 Let us try to break this down into individual unit step functions. Figure \ref{fig:superposition_unit_steps} shows the superposition of the two step functions $u(t-t_0)$ and 
-$-u(t-t_1).$ Clearly, their superposition gives the rectangular pulse in figure \ref{fig:rect_pulse_}.\\~\\
+$-u(t-t_1).$ Clearly, their superposition gives the rectangular pulse in figure \ref{fig:rect_pulse_}. \\~\\
 
 \begin{tcolorbox}[colframe=black]
 \begin{figure}[H]
@@ -745,7 +761,7 @@ $-u(t-t_1).$ Clearly, their superposition gives the rectangular pulse in figure 
     	samples=100, 
     	color=red, smooth,ultra thick
 	]
-	{1} node [below, pos=1, color=black] {\small$u(t-t_0)$};;
+	{1} node [below, pos=1, color=black] {\small $u(t-t_0)$ };
 	\addplot [
     	domain=3:4, 
     	samples=100, 
@@ -848,7 +864,7 @@ We may now apply the initial condition $i(0^-)=i(0^+)=0$:
 i(t) = \frac{V_0}{R}(1-e^{-Rt/L})u(t)
 \end{equation*}
  
- The response is plotted in figure , and it is clear how $i$ rises from it's intial value of $0$ to it's forced value of $\frac{V_0}{R}$. In this 
+ The response is plotted in figure \ref{fig:forced_RC_plot}, and it is clear how $i$ rises from it's intial value of $0$ to it's forced value of $\frac{V_0}{R}$. In this 
  case, a tangent drawn to the response curve at $t=0$ meets the forced response at $t=\uptau$.
  \begin{tcolorbox}
  \begin{figure}[H]
@@ -920,7 +936,7 @@ v(t) = v_f + v_n
 \end{equation*}
 
 Where $v_n$ is of the form $Ae^{it/\uptau}$ and $v_f$ is reminiscent of the exponential forcing function. To calculate the time constant for this
-circuit, note that the The\'{e}venin resistance across the capacitor is
+circuit, note that the Th\'{e}venin resistance across the capacitor is
 \begin{equation*}
  R_{eq} = 4.7 + 10 = 14.7\Omega
 \end{equation*}
@@ -945,15 +961,16 @@ we find that $P=1/\uptau=3.092\cdot 10^{3}$ and $Q(t)=72.67\cdot 10^{3}e^{-2000t
 and since the voltage across a capacitor cannot change discontinuously with time, our initial conditions are $v(0^-)=v(0^+)=0$. Incorporating
 these into our response, finally we get
 \begin{equation*}
- v(t) = 66.55e^{-2000t}(1 - e^{-3092})V 
+ v(t) = 66.55(e^{-2000t} - e^{-3092})V 
 \end{equation*}
 
 for $t>0s$. Is this expected? We have one term of the form $e^{-2000t}$, our forcing function and one term of the form $e^{-3092}$, our natural
-response, and so everything checks out.
+response, and so everything checks out. Interestingly, we can find this response in just 3 or 4 steps using Laplace and Fourier transforms, without
+even having to write down a single differential equation.
 
 \end{tcolorbox}
 
-The methods of finding a response for a forced circuit are summarised neatly below:\\~\\
+The methods of finding a response for a forced circuit are summarised neatly below:
 
 \begin{tcolorbox}[arc=0mm]
  \begin{enumerate}
@@ -967,6 +984,49 @@ The methods of finding a response for a forced circuit are summarised neatly bel
 \end{tcolorbox}
 
 The method to find the complete response for an LR circuit is, of course, the dual of the statements listed above.
+
+\color{blue}
+\subsection{An Application Of First Order Circuits: The Astable 555 Timer IC}
+\color{black}
+
+\begin{figure}[h]
+    \centering
+    \begin{circuitikz}[american, scale=0.65, transform shape]
+        \ctikzset{transistors/arrow pos=end}
+        \draw (0,0) node [npn, xscale=-1] (npn){};
+        \draw ($(npn)+(0.18,0)$) circle [radius=18pt];
+        \draw (npn.E) node [ground] {};
+        \draw (npn.C) -- ++(-3,0) to [R=$R_A$] ++(0, 2);
+        \draw ($(npn.C)+(-3,0)$) to[R, l_=$R_B$] ++(0,-3) -- ++(0,-5) to [C=$C$] +(0,-2);
+        \draw ($(npn.C)+(-3,-10)$) node[ground]{};
+        \draw ($(npn)+(5,-3.5)$) node [op amp, yscale=-1] (comp1){};
+        \draw ($(comp1)+(0,-3)$) node [op amp, yscale=-1] (comp2){};
+        \draw ($(comp1)+(3,-1.5)$) node[flipflop SR, fill=blue!50] (sr){};
+        \draw (comp1.out) -- (comp1.out |- sr.pin 1) -- (sr.pin 1);
+        \draw (comp2.out) -- (comp2.out |- sr.pin 3) -- (sr.pin 3);
+        \draw (npn.B) -- (sr.pin 6 |- npn.B) -- (sr.pin 6);
+        \draw (sr.pin 4) -- ++(3,0) to [empty led, fill=yellow] ++(0,-2) to [R] ++(0,-1.5); 
+        \draw ($(sr.pin 4)+(3,-3.5)$) node[ground]{};
+        \coordinate (A) at ($(npn.C)+(-3,0)$);
+        \draw (A |- comp2.-) -- (comp2.-);
+        \draw (A |- comp1.+) -- (comp1.+);
+        \coordinate (B) at ($(npn.B)+(1,0)$);
+        \draw ($(npn.B)+(1,2)$) -- ++(0,-1.5) to [R=$R$] ++(0,-3.5) -- (B |- comp1.-) to [R=$R$] (B |- comp2.+) -- ++(0,-1) to [R=$R$] +(0,-3);
+        \draw (B |- comp1.-) -- (comp1.-);
+        \draw (B |- comp2.+) -- (comp2.+);
+        \draw (B |- comp1.-) to [short, -*] (B |- comp1.-);
+        \draw (B |- comp2.+) to [short, -*] (B |- comp2.+);
+        \draw ($(B |- comp2.+)+(0,-4)$) node [ground]{};
+        \draw ($(B)+(0,2)$) node [vcc] {VCC};
+        \draw ($(npn.C)+(-3,2)$) node [vcc]{VCC};
+        \draw[cyan] ($(npn.C)+(-1,-10)$) rectangle +(12,12.5);
+        \draw ($(npn.C)+(5.5,2.5)$) node[anchor=south] {\Large 555 Timer};
+        \draw (B |- comp1.-) node[anchor=east] {\Large $\frac{2\text{VCC}}{3}$};
+        \draw (B |- comp2.+) node[anchor=east] {\Large $\frac{\text{VCC}}{3}$};
+    \end{circuitikz}
+    \caption{The 555 IC being operated as an astable timer, with a simplified version of it's internal circuitry}
+    \label{fig:555_IC}
+\end{figure}
 
 \end{flushleft}
 \end{document}

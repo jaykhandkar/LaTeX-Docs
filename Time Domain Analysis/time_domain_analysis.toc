@@ -6,6 +6,7 @@
 \contentsline {subsubsection}{\numberline {2.1.2}Properties Of The Natural Response}{4}{subsubsection.2.1.2}%
 \contentsline {subsubsection}{\numberline {2.1.3}The Source-Free RC Circuit}{7}{subsubsection.2.1.3}%
 \contentsline {subsubsection}{\numberline {2.1.4}General RL and RC Circuits}{7}{subsubsection.2.1.4}%
-\contentsline {subsection}{\numberline {2.2}The Unit Step Function}{9}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.2}The Unit Step Function}{8}{subsection.2.2}%
 \contentsline {subsubsection}{\numberline {2.2.1}The Rectangular Pulse Function}{10}{subsubsection.2.2.1}%
-\contentsline {subsection}{\numberline {2.3}The Forced Response}{11}{subsection.2.3}%
+\contentsline {subsection}{\numberline {2.3}The Forced Response}{10}{subsection.2.3}%
+\contentsline {subsection}{\numberline {2.4}An Application Of First Order Circuits: The Astable 555 Timer IC}{14}{subsection.2.4}%
