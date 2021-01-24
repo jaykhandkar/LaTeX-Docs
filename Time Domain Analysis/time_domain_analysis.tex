@@ -315,7 +315,6 @@ also be determined from this fact:
 \end{tcolorbox}
 \end{figure}
 
-\newpage
 
 \begin{tcolorbox}[colback=blue!5, colframe=blue!75!black, title=\textbf{Example 2.1}, breakable]
 \begin{figure}[H]
@@ -620,12 +619,6 @@ or graphically as\\~\\
 
 Note that the vertical line is not really a part of the unit step's definition but it is usally shown in
 each drawing as it looks nicer.\\~\\
-Interestingly, the physical equivalent of the unit step is not actually a simple voltage source in series
-with a switch. Consider the step voltage source shown in figure  \ref{fig:voltage_step}. Let us try to draw it's physical 
-equivalent. On first thought, one might come up with figure \ref{fig:wrong_eq}. However, these two circuits are not
-equivalent for $t<2s$: the voltage across the network in figure  \ref{fig:wrong_eq} is completely unspecified in this time interval. The actual equivalent to the step voltage source is the single-pole double throw switch shown in
-figure \ref{fig:right_eq}. Clearly, the voltage is zero for $t<2s$, and this is consistent with the step voltage function.
-%\newpage
 
 \begin{figure}[H]
 \centering
@@ -669,6 +662,12 @@ figure \ref{fig:right_eq}. Clearly, the voltage is zero for $t<2s$, and this is 
 \caption{(a) The voltage-step forcing function. (b) A possible equivalent. (c) The exact equivalent.}
 \label{fig:unit_physical_equiv}
 \end{figure}
+
+Interestingly, the physical equivalent of the unit step is not actually a simple voltage source in series
+with a switch. Consider the step voltage source shown in figure  \ref{fig:voltage_step}. Let us try to draw it's physical 
+equivalent. On first thought, one might come up with figure \ref{fig:wrong_eq}. However, these two circuits are not
+equivalent for $t<2s$: the voltage across the network in figure  \ref{fig:wrong_eq} is completely unspecified in this time interval. The actual equivalent to the step voltage source is the single-pole double throw switch shown in
+figure \ref{fig:right_eq}. Clearly, the voltage is zero for $t<2s$, and this is consistent with the step voltage function.
 
 \color{blue}
 \subsubsection{The Rectangular Pulse Function}
@@ -865,7 +864,7 @@ i(t) = \frac{V_0}{R}(1-e^{-Rt/L})u(t)
 \end{equation*}
  
  The response is plotted in figure \ref{fig:forced_RC_plot}, and it is clear how $i$ rises from it's intial value of $0$ to it's forced value of $\frac{V_0}{R}$. In this 
- case, a tangent drawn to the response curve at $t=0$ meets the forced response at $t=\uptau$.
+ case, a tangent drawn to the response curve at $t=0$ meets the forced response at $t=\uptau$.\\~\\
  \begin{tcolorbox}
  \begin{figure}[H]
 	\centering
@@ -992,6 +991,7 @@ The method to find the complete response for an LR circuit is, of course, the du
 \begin{figure}[h]
     \centering
     \begin{circuitikz}[american, scale=0.65, transform shape]
+        \tikzset{flipflop mySR/.style={flipflop, flipflop def={t4=Q, t1=R, t3=S, t6=\ctikztextnot{Q}}}}
         \ctikzset{transistors/arrow pos=end}
         \draw (0,0) node [npn, xscale=-1] (npn){};
         \draw ($(npn)+(0.18,0)$) circle [radius=18pt];
@@ -1001,7 +1001,7 @@ The method to find the complete response for an LR circuit is, of course, the du
         \draw ($(npn.C)+(-3,-10)$) node[ground]{};
         \draw ($(npn)+(5,-3.5)$) node [op amp, yscale=-1] (comp1){};
         \draw ($(comp1)+(0,-3)$) node [op amp, yscale=-1] (comp2){};
-        \draw ($(comp1)+(3,-1.5)$) node[flipflop SR, fill=blue!50] (sr){};
+        \draw ($(comp1)+(3,-1.5)$) node[flipflop mySR, fill=cyan] (sr){};
         \draw (comp1.out) -- (comp1.out |- sr.pin 1) -- (sr.pin 1);
         \draw (comp2.out) -- (comp2.out |- sr.pin 3) -- (sr.pin 3);
         \draw (npn.B) -- (sr.pin 6 |- npn.B) -- (sr.pin 6);
