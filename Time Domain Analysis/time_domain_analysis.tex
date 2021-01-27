@@ -993,6 +993,7 @@ The method to find the complete response for an LR circuit is, of course, the du
     \begin{circuitikz}[american, scale=0.65, transform shape]
         \tikzset{flipflop mySR/.style={flipflop, flipflop def={t4=Q, t1=R, t3=S, t6=\ctikztextnot{Q}}}}
         \ctikzset{transistors/arrow pos=end}
+        \ctikzset{bipoles/crossing/size=0.5}
         \draw (0,0) node [npn, xscale=-1] (npn){};
         \draw ($(npn)+(0.18,0)$) circle [radius=18pt];
         \draw (npn.E) node [ground] {};
@@ -1011,7 +1012,14 @@ The method to find the complete response for an LR circuit is, of course, the du
         \draw (A |- comp2.-) -- (comp2.-);
         \draw (A |- comp1.+) -- (comp1.+);
         \coordinate (B) at ($(npn.B)+(1,0)$);
-        \draw ($(npn.B)+(1,2)$) -- ++(0,-1.5) to [R=$R$] ++(0,-3.5) -- (B |- comp1.-) to [R=$R$] (B |- comp2.+) -- ++(0,-1) to [R=$R$] +(0,-3);
+        %\draw ($(npn.B)+(1,2)$) -- ++(0,-1.5) to [R=$R$] ++(0,-3.5) -- (B |- comp1.-) to [R=$R$] (B |- comp2.+) -- ++(0,-1) to [R=$R$] +(0,-3);
+        \node at ($(npn.B)+(1,0)$)[jump crossing, rotate=90](X){};
+        \node at (B |- comp1.+)[jump crossing, rotate=90](Y){};
+        \node at (B |- comp2.-)[jump crossing, rotate=90](Z){};
+        \draw (X.east) -- ($(B)+(0,2)$);
+        \draw (X.west) to [R=$R$] (Y.east);
+        \draw (Y.west) -- (B |- comp1.-) to [R=$R$] (B |- comp2.+) -- (Z.east);
+        \draw (Z.west) to [R=$R$] ($(B |- comp2.+)+(0,-3)$) -- +(0,-1);
         \draw (B |- comp1.-) -- (comp1.-);
         \draw (B |- comp2.+) -- (comp2.+);
         \draw (B |- comp1.-) to [short, -*] (B |- comp1.-);
