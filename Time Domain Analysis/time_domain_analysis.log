@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2021.1.18)  27 JAN 2021 21:19
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2021.1.18)  27 JAN 2021 22:46
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1131,12 +1131,12 @@ l.52 \newpage
 \realshift=\dimen360
 \realshift=\dimen361
 
-Underfull \hbox (badness 10000) in paragraph at lines 318--320
+Underfull \hbox (badness 10000) in paragraph at lines 315--317
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 318--320
+Underfull \hbox (badness 10000) in paragraph at lines 315--317
 
  []
 
@@ -1167,7 +1167,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 318--320
 \realshift=\dimen385
 \alshift=\dimen386
 
-Overfull \hbox (8.12027pt too wide) in paragraph at lines 435--436
+Overfull \hbox (8.12027pt too wide) in paragraph at lines 432--433
  [][] 
  []
 
@@ -1179,12 +1179,12 @@ Overfull \hbox (8.12027pt too wide) in paragraph at lines 435--436
 \realshift=\dimen392
 \realshift=\dimen393
 
-Underfull \hbox (badness 10000) in paragraph at lines 457--459
+Underfull \hbox (badness 10000) in paragraph at lines 454--456
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 457--459
+Underfull \hbox (badness 10000) in paragraph at lines 454--456
 
  []
 
@@ -1212,25 +1212,30 @@ Underfull \hbox (badness 10000) in paragraph at lines 457--459
 \realshift=\dimen411
 \realshift=\dimen412
 \realshift=\dimen413
- [14] [15]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1032.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1032.
+ [14]
+Overfull \hbox (5.38165pt too wide) in paragraph at lines 1129--1130
+ [][] 
+ []
+
+[15] [16]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1191.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1191.
  (./time_domain_analysis.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1032.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1032.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1191.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1191.
 
 Package rerunfilecheck Info: File `time_domain_analysis.out' has not changed.
 (rerunfilecheck)             Checksum: C4362305BB5D0C35A039011D61FE08A2;892.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1032.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1191.
  ) 
 Here is how much of TeX's memory you used:
- 49221 strings out of 483065
- 1257649 string characters out of 5963550
- 1808025 words of memory out of 5000000
- 63547 multiletter control sequences out of 15000+600000
+ 49215 strings out of 483065
+ 1257321 string characters out of 5963550
+ 1872937 words of memory out of 5000000
+ 63537 multiletter control sequences out of 15000+600000
  553590 words of font info for 103 fonts, out of 8000000 for 9000
  81 hyphenation exceptions out of 8191
- 74i,20n,127p,960b,2787s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 73i,21n,127p,960b,2787s stack positions out of 5000i,500n,10000p,200000b,80000s
  </home/jay/.texlive2019/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1095.600pk
 ></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbsy10.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/shar
@@ -1250,10 +1255,10 @@ e/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf
 -dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/
 fonts/type1/public/amsfonts/euler/eurm10.pfb></usr/share/texlive/texmf-dist/fon
 ts/type1/public/amsfonts/euler/eurm7.pfb>
-Output written on time_domain_analysis.pdf (16 pages, 303945 bytes).
+Output written on time_domain_analysis.pdf (17 pages, 334598 bytes).
 PDF statistics:
- 287 PDF objects out of 1000 (max. 8388607)
- 246 compressed objects within 3 object streams
- 60 named destinations out of 1000 (max. 500000)
+ 296 PDF objects out of 1000 (max. 8388607)
+ 254 compressed objects within 3 object streams
+ 64 named destinations out of 1000 (max. 500000)
  101 words of extra memory for PDF output out of 10000 (max. 10000000)
 

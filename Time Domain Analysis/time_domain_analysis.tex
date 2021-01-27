@@ -25,7 +25,7 @@
 \rfoot{Page \thepage}
 
 
-\pgfplotsset{width=7cm, compat=1.16}
+\pgfplotsset{width=8cm, compat=1.16}
 
 \counterwithin{figure}{section}
 \numberwithin{equation}{section}
@@ -158,9 +158,9 @@ which is the total energy stored initially in the inductor, as expected.
 \subsubsection{Properties Of The Natural Response}
 \color{black}
 
+\begin{tcolorbox}[colframe=black]
 \begin{figure}[H]
 \centering
-\begin{tcolorbox}[colframe=black, hbox]
 \begin{tikzpicture}
 \begin{axis}[
 	legend pos = north east,
@@ -196,10 +196,10 @@ which is the total energy stored initially in the inductor, as expected.
 
 \end{axis}
 \end{tikzpicture}
-\end{tcolorbox}
 \caption{Some possible plots for the natural response}
 \label{fig:nat_resp}
 \end{figure}
+\end{tcolorbox}
 
 
 From the natural response of the series RL circuit given by Eq.\ref{equation:rl_nat_resp}, it is clear that
@@ -224,10 +224,9 @@ The constant $\uptau$ has the units of seconds and is called the \textbf{time co
 It may be found graphically from the response curve by drawing the tangent to the curve at $t=0$ and
 finding where it intersects the $x$ axis, as shown below:
 
-
+\begin{tcolorbox}[colframe=black]
 \begin{figure}[H]
 \centering
-\begin{tcolorbox}[colframe=black, hbox]
 \begin{tikzpicture}
 \begin{axis}[
 	ytick={1}, xtick={0,2},
@@ -254,23 +253,21 @@ finding where it intersects the $x$ axis, as shown below:
 
 \end{axis}
 \end{tikzpicture}
-\label{fig:finding_tau_graphically}
-\end{tcolorbox}
 \caption{Finding the time constant graphically}
+\label{fig:finding_tau_graphically}
 \end{figure}
-
+\end{tcolorbox}
 
 Yet another way to define the time constant is to note that
 \begin{equation*}
 \frac{i(\uptau)}{I_0} = e^{-1} = 0.3679
 \end{equation*}
 ie, in one time constant, the response falls to $36.8\%$ of it's initial value. The value of $\uptau$ may
-also be determined from this fact:
+also be determined from this fact:\\~\\
 
-
+\begin{tcolorbox}[colframe=black]
 \begin{figure}[H]
 \centering
-\begin{tcolorbox}[colframe=black, hbox]
 \begin{tikzpicture}
 \begin{axis}[
 	ytick={0.1353,0.3679,1}, xticklabels={0, $\uptau$, $2\uptau$},xtick={0,2,4},
@@ -296,10 +293,10 @@ also be determined from this fact:
 
 \end{axis}
 \end{tikzpicture}
+\caption{Yet another way to find the time constant graphically}
 \label{fig:finding_tau_graphically_2}
-\end{tcolorbox}
 \end{figure}
-
+\end{tcolorbox}
 
 \begin{tcolorbox}[colback=blue!5, colframe=blue!75!black, title=\textbf{Example 2.1}, breakable]
 \begin{figure}[H]
@@ -1026,7 +1023,169 @@ Figure \ref{fig:555_IC} shows the 555 IC being operated as an astable timer. The
 components outside are under our control. We have chosen to connect an LED across the output of the IC. Let us see how the LED is made to blink
 periodically, and also find an expression for this time period. \\~\\
 The three resistances between ground and $V_{CC}$ in the IC are equal, and hence we can assign the node voltages $\frac{\text{VCC}}{3}$ and 
-$\frac{2\text{VCC}}{3}$ at the positive of the lower comparator and the negative of the upper comparator, respectively.
+$\frac{2\text{VCC}}{3}$ at the positive of the lower comparator and the negative of the upper comparator, respectively. Let us say we have
+connected the capacitor at $t=0$. At this instant, the voltage at the positive of the upper comparator and the negative of the lower comparator
+will be $0V$, and hence the upper comparator is off and the lower comparator is on. So, the SR latch is \textit{set} and the output $Q$ is high, 
+the LED is glowing. When the voltage across the capacitor reaches $\frac{\text{VCC}}{3}V$, the lower comparator is no longer on. However, this
+does not change anything, since the reset pin of the latch is also low, and the output $Q$ remains high. When the voltage across the capacitor
+reaches $\frac{2\text{VCC}}{3}V$, the upper comparator is turned on and the latch is \textit{reset}. The output goes low and the LED stops
+glowing. Now, $\overline{Q}$ turns on and hence the BJT also turns on, and current can flow from the capacitor to ground. The capacitor starts
+discharging. \\~\\
+When the voltage across the capacitor drops below $\frac{\text{VCC}}{3}V$, the set pin goes high again and the output $Q$ goes high. The LED starts
+glowing, the capacitor starts charging till it reaches $\frac{\text{VCC}}{3}V$ and the entire process is repeated again. We now have an idea of
+how this timer works, and we can try and calculate the exact time period for charging and discharging.\\~\\
+
+Firstly, note that the capacitor charges through both the resistors $R_A$ and $R_B$ and discharges only through $R_B$. The output waveform
+obtained at $Q$ will therefore be rectangular. For the charging and discharging of the capacitor, the general equations are
+
+\begin{align*}
+v(t) &= v_0\cdot (1-e^{-t/(R_A+R_B)C})\\
+v(t) &= v_0\cdot e^{-t/(R_B)C}
+\end{align*}
+
+Where, of course, $v_0$ can be any one of $V_{CC}/3$, $2V_{CC}/3$ or $V_{CC}$. Consider first the time taken to charge the capacitor. Incorporating
+the initial condition $v(0) = V_{CC}/3$, the equation for the charging half is
+
+\begin{equation*}
+v(t) = \frac{2V_{CC}}{3}(1-e^{-t/(R_A+R_B)C}) + \frac{V_{CC}}{3}
+\end{equation*}
+
+Substituting $v(t) = 2V_{CC}/3$, we find that the time taken $t_1$ by the capacitor to charge is 
+
+\begin{equation}
+t_1 = \ln(2)\cdot (R_A + R_B)\cdot C
+\end{equation}
+
+Similarly, it may be shown that the time $t_2$ taken by the capacitor to discharge is 
+
+\begin{equation}
+t_2 = \ln(2)\cdot (R_B)\cdot C
+\end{equation}
+
+These are the standard expressions one may find in any datasheet. The output waveform across the capacitor and $Q$ is plotted in figure 
+\ref{fig:555_waveform}.
+
+\begin{tcolorbox}[colframe=black]
+\begin{figure}[H]
+\centering
+\begin{subfigure}{.5\textwidth}
+	\centering
+ \begin{tikzpicture}
+\begin{axis}[
+	legend pos = north east,
+    axis lines = left,
+    yticklabels={$\frac{1}{3}V_{cc}$, $\frac{2}{3}V_{cc}$, $V_{cc}$},ytick={1,2,3}, xtick=\empty,
+    x label style = {at={(1,0)},anchor=west},
+    y label style = {at={(0,1)},rotate=-90,anchor=south},
+    xlabel = $t$,
+    ylabel = {$v_C$}, ymax = 3.2
+]
+
+\addplot [
+    domain=0:2.197, 
+    samples=100, 
+    color=red, smooth
+]
+{3*(1-exp(-0.5*x))};
+\addplot [
+    domain=2.197:3.583, 
+    samples=100, 
+    color=red, smooth
+]
+{2*exp(-0.5*(x-2.197))};
+\addplot [
+    domain=3.583:4.969, 
+    samples=100, 
+    color=red, smooth
+]
+{3*(1-exp(-0.5*(x-2.772)))};
+\addplot [
+    domain=4.969:6.357, 
+    samples=100, 
+    color=red, smooth
+]
+{2*exp(-0.5*(x-4.969))};
+\addplot [
+    domain=6.357:7.740, 
+    samples=100, 
+    color=red, smooth
+]
+{3*(1-exp(-0.5*(x-5.544)))};
+\addplot [
+    domain=0:7.740,
+    samples=100,
+    color=blue, smooth, dashed, thin
+]
+{1};
+\addplot [
+    domain=0:7.740,
+    samples=100,
+    color=blue, smooth, dashed, thin
+]
+{2};
+
+
+\end{axis}
+\end{tikzpicture}
+  \caption{The waveform across $C$}
+  \label{fig:555_C_waveform}
+\end{subfigure}%
+\begin{subfigure}{.5\textwidth}
+	\centering
+  \begin{tikzpicture}
+	\begin{axis}[
+		ytick={0,1}, xtick=\empty,
+		x label style = {at={(5,0)},anchor=west},
+		y label style = {at={(0,1.25)},rotate=-90,anchor=south},
+   		 axis lines = middle,
+    	xlabel = $t$,
+   	 ymin = -0.25, ymax = 2,
+   	 xmin=-0.5, xmax=8
+	]
+
+	\addplot [
+    	domain=0:2, 
+    	samples=100, 
+    	color=red, smooth
+	]
+	{1};
+	\addplot [
+    	domain=2:3, 
+    	samples=100, 
+    	color=red, smooth
+	]
+	{0};
+	\addplot [
+    	domain=3:5, 
+    	samples=100, 
+    	color=red, smooth
+	]
+	{1};
+	\addplot [
+    	domain=5:6, 
+    	samples=100, 
+    	color=red, smooth
+	]
+	{0};
+		\addplot [
+    	domain=6:8, 
+    	samples=100, 
+    	color=red, smooth
+	]
+	{1};
+    \addplot[mark=none, red] coordinates {(2,0) (2, 1)};
+    \addplot[mark=none, red] coordinates {(3,0) (3, 1)};
+    \addplot[mark=none, red] coordinates {(5,0) (5, 1)};
+    \addplot[mark=none, red] coordinates {(6,0) (6, 1)};
+	\end{axis}
+	\end{tikzpicture}
+    \caption{The waveform across $Q$}
+    \label{fig:555_Q_waveform}
+\end{subfigure}
+\caption{The output waveforms of the 555 astable timer}
+\label{fig:555_waveform}
+\end{figure}
+\end{tcolorbox}
 
 \end{flushleft}
 \end{document}
