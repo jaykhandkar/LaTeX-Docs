@@ -10,3 +10,5 @@
 \contentsline {subsubsection}{\numberline {2.2.1}The Rectangular Pulse Function}{10}{subsubsection.2.2.1}%
 \contentsline {subsection}{\numberline {2.3}The Forced Response}{10}{subsection.2.3}%
 \contentsline {subsection}{\numberline {2.4}An Application Of First Order Circuits: The Astable 555 Timer IC}{14}{subsection.2.4}%
+\contentsline {section}{\numberline {3}Second Order Circuits}{16}{section.3}%
+\contentsline {section}{\numberline {4}The Parallel RLC}{16}{section.4}%

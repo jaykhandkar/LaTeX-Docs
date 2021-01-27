@@ -1187,5 +1187,45 @@ These are the standard expressions one may find in any datasheet. The output wav
 \end{figure}
 \end{tcolorbox}
 
+\color{blue}
+\section{Second Order Circuits}
+\color{black}
+
+Let us now consider circuits governed by a second order differential equation, those containing more than one capacitor and inductor. The 
+response shall vary according to the value of the components $R$, $L$ and $C$. We will first consider parallel RLC circuits.
+
+\color{blue}
+\section{The Parallel RLC}
+\color{black}
+
+\begin{figure}[H]
+\centering
+
+    \begin{circuitikz}[american]
+        \draw (0,0) to [R=$R$, n=R] ++(0,3) -- ++(4,0) to [C=$C$] ++(0,-3) -- ++(-4,0);
+        \draw (2,0) node[circ]{} to [cute inductor, l=$L$, i=$i$] ++(0,3) node[circ]{};
+        \draw (2,3) node[anchor=south] {$v$};
+    \end{circuitikz}
+\caption{The source-free parallel RLC circuit}
+\label{fig:src_free_paral_rlc}
+\end{figure}
+
+Let us assume that there is some energy stored initially in the capacitor and the inductor. With reference to figure \ref{fig:src_free_paral_rlc},
+we may then write the nodal equation, using Kirchhoff's current law:
+
+\begin{equation*}
+\frac{v}{R} + \frac{1}{L}\int_{t_0}^{t} v \, dt^{'} - i(t_0) + C \frac{dv}{dt} = 0
+\end{equation*}
+subject to the initial conditions $i(0^+) = I_0$, $v(0^+)=V_0$. Differentiating the above equation, we obtain the differential equation to the
+parallel RLC circuit:
+
+\begin{equation}
+\label{equation:parallel_rlc}
+\frac{d^2v}{dt^2} + \frac{1}{RC}\frac{dv}{dt} + \frac{1}{LC}v = 0
+\end{equation}
+
+whose solution $v(t)$ is the desired natural response. The auxilliary equation for \ref{equation:parallel_rlc} is
+
+
 \end{flushleft}
 \end{document}
