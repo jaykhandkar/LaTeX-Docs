@@ -24,22 +24,7 @@
 \lhead{\fontsize{14}{15} \selectfont Time Domain Analysis}
 \rfoot{Page \thepage}
 
-\tikzset{
-  declare function={% in case of CVS which switches the arguments of atan2
-    atan3(\a,\b)=ifthenelse(atan2(0,1)==90, atan2(\a,\b), atan2(\b,\a));},
-  kinky cross radius/.initial=+.125cm,
-  @kinky cross/.initial=+, kinky crosses/.is choice,
-  kinky crosses/left/.style={@kinky cross=-},kinky crosses/right/.style={@kinky cross=+},
-  kinky cross/.style args={(#1)--(#2)}{
-    to path={
-      let \p{@kc@}=($(\tikztotarget)-(\tikztostart)$),
-          \n{@kc@}={atan3(\p{@kc@})+180} in
-      -- ($(intersection of \tikztostart--{\tikztotarget} and #1--#2)!%
-             \pgfkeysvalueof{/tikz/kinky cross radius}!(\tikztostart)$)
-      arc [ radius     =\pgfkeysvalueof{/tikz/kinky cross radius},
-            start angle=\n{@kc@},
-            delta angle=\pgfkeysvalueof{/tikz/@kinky cross}180 ]
-      -- (\tikztotarget)}}}
+
 \pgfplotsset{width=7cm, compat=1.16}
 
 \counterwithin{figure}{section}
@@ -989,7 +974,8 @@ The method to find the complete response for an LR circuit is, of course, the du
 \color{black}
 
 \begin{figure}[h]
-    \centering
+\centering
+\fbox{
     \begin{circuitikz}[american, scale=0.65, transform shape]
         \tikzset{flipflop mySR/.style={flipflop, flipflop def={t4=Q, t1=R, t3=S, t6=\ctikztextnot{Q}}}}
         \ctikzset{transistors/arrow pos=end}
@@ -1031,10 +1017,16 @@ The method to find the complete response for an LR circuit is, of course, the du
         \draw ($(npn.C)+(5.5,2.5)$) node[anchor=south] {\Large 555 Timer};
         \draw (B |- comp1.-) node[anchor=east] {\Large $\frac{2\text{VCC}}{3}$};
         \draw (B |- comp2.+) node[anchor=east] {\Large $\frac{\text{VCC}}{3}$};
-    \end{circuitikz}
+    \end{circuitikz}}
     \caption{The 555 IC being operated as an astable timer, with a simplified version of it's internal circuitry}
     \label{fig:555_IC}
 \end{figure}
+
+Figure \ref{fig:555_IC} shows the 555 IC being operated as an astable timer. The components inside the cyan box are all part of the IC, the
+components outside are under our control. We have chosen to connect an LED across the output of the IC. Let us see how the LED is made to blink
+periodically, and also find an expression for this time period. \\~\\
+The three resistances between ground and $V_{CC}$ in the IC are equal, and hence we can assign the node voltages $\frac{\text{VCC}}{3}$ and 
+$\frac{2\text{VCC}}{3}$ at the positive of the lower comparator and the negative of the upper comparator, respectively.
 
 \end{flushleft}
 \end{document}
