@@ -1195,7 +1195,7 @@ Let us now consider circuits governed by a second order differential equation, t
 response shall vary according to the value of the components $R$, $L$ and $C$. We will first consider parallel RLC circuits.
 
 \color{blue}
-\section{The Parallel RLC}
+\subsection{The Parallel RLC}
 \color{black}
 
 \begin{figure}[H]
@@ -1224,8 +1224,54 @@ parallel RLC circuit:
 \frac{d^2v}{dt^2} + \frac{1}{RC}\frac{dv}{dt} + \frac{1}{LC}v = 0
 \end{equation}
 
-whose solution $v(t)$ is the desired natural response. The auxilliary equation for \ref{equation:parallel_rlc} is
+whose solution $v(t)$ is the desired natural response. The auxilliary equation to \ref{equation:parallel_rlc} is
 
+\begin{equation*}
+s^2 + \frac{1}{RC}s + \frac{1}{LC} = 0 
+\end{equation*}
+
+Using the quadratic formula, we obtain the roots:
+
+\begin{align}
+s_1 &= -\frac{1}{2RC} + \sqrt{\left(\frac{1}{2RC}\right)^2 - \frac{1}{LC}}\\
+s_2 &= -\frac{1}{2RC} - \sqrt{\left(\frac{1}{2RC}\right)^2 - \frac{1}{LC}}
+\end{align}
+
+At this stage, it is convenient to define 
+
+\begin{equation}
+\omega_0 = \frac{1}{\sqrt{LC}}
+\end{equation}
+and
+\begin{equation}
+\alpha = \frac{1}{2RC}
+\end{equation}
+The term $\omega_0$ is called the \textit{\textbf{resonant frequency}}, or the \textit{\textbf{neper frequency}} and the term $\alpha$ is called
+the \textit{\textbf{exponential damping coefficient}}. The two roots are then conveniently given by
+
+\begin{align}
+s_1 &= -\alpha + \sqrt{\alpha^2 - \omega_0^2}\\
+s_2 &= -\alpha - \sqrt{\alpha^2 - \omega_0^2}
+\end{align}
+and the natural response of the parallel RLC is
+
+\begin{equation}
+v(t) = A_1e^{s_1t} + A_2e^{s_2t}
+\end{equation}
+
+The three conditions imposed on the discriminant of the quadratic give rise to three different types of responses, known as
+
+\begin{itemize}
+\item $\alpha > \omega_0$, both roots are real: \textbf{overdamped}
+\item $\alpha = \omega_0$, both roots are equal: \textbf{critically damped}
+\item $\alpha < \omega_0$, both roots are imaginary: \textbf{underdamped}
+\end{itemize}
+
+We will consider these cases one by one.
+
+\color{blue}
+\subsubsection{Overdamped Response}
+\color{black}
 
 \end{flushleft}
 \end{document}

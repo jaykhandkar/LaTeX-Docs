@@ -11,4 +11,5 @@
 \contentsline {subsection}{\numberline {2.3}The Forced Response}{10}{subsection.2.3}%
 \contentsline {subsection}{\numberline {2.4}An Application Of First Order Circuits: The Astable 555 Timer IC}{14}{subsection.2.4}%
 \contentsline {section}{\numberline {3}Second Order Circuits}{16}{section.3}%
-\contentsline {section}{\numberline {4}The Parallel RLC}{16}{section.4}%
+\contentsline {subsection}{\numberline {3.1}The Parallel RLC}{16}{subsection.3.1}%
+\contentsline {subsubsection}{\numberline {3.1.1}Overdamped Response}{17}{subsubsection.3.1.1}%
