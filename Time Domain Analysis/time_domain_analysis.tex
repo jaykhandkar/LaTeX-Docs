@@ -302,10 +302,10 @@ also be determined from this fact:\\~\\
 \begin{figure}[H]
 \centering
 \begin{circuitikz}[american, scale=0.9, transform shape]
-	\draw (0,0) to [R=40<\Omega>, v>=$v$, voltage shift=2.5] (0,4) to [short, -*] (2,4)
+	\draw (0,0) to [R=40<\ohm>, v>=$v$, voltage shift=2.5] (0,4) to [short, -*] (2,4)
 				to [opening switch,l=${t=0s}$, o-o] (2,2) to [american voltage source, 
 				v=24<\volt>, o-o, invert] (2,0); 
-	\draw  (2,4) to [R=10<\Omega>] (5,4) to [cute inductor, l=5<\henry>,i=$i_L$] (5,0) to 
+	\draw  (2,4) to [R=10<\ohm>] (5,4) to [cute inductor, l=5<\henry>,i=$i_L$] (5,0) to 
 			[short] (0,0);
 \end{circuitikz}
 \caption{A simple RL circuit with a switch thrown at $t=0$}
@@ -324,9 +324,9 @@ throwing of the switch. In \ref{fig:prior_t_0}, the inductor acts like a short t
   \centering
 
   \begin{circuitikz}[american, scale=0.9, transform shape]
-	\draw (0,0) to [R=40<\Omega>, v>=$v$, voltage shift=2.5] (0,4) to [short, -*] (2,4)
+	\draw (0,0) to [R=40<\ohm>, v>=$v$, voltage shift=2.5] (0,4) to [short, -*] (2,4)
 				to [american voltage source, v=24<\volt>, o-o, invert] (2,0); 
-	\draw  (2,4) to [R=10<\Omega>] (5,4) to [short, i=$i_L$] (5,0) to 
+	\draw  (2,4) to [R=10<\ohm>] (5,4) to [short, i=$i_L$] (5,0) to 
 			[short] (0,0);
   \end{circuitikz}
   
@@ -337,7 +337,7 @@ throwing of the switch. In \ref{fig:prior_t_0}, the inductor acts like a short t
   \centering
   
   \begin{circuitikz}[american, scale=0.9, transform shape]
-	\draw  (0,0) to [R=40<\Omega>, v>=$v$, voltage shift=2.5] (0,4) to [R=10<\Omega>] (5,4) to 
+	\draw  (0,0) to [R=40<\ohm>, v>=$v$, voltage shift=2.5] (0,4) to [R=10<\ohm>] (5,4) to 
 				[cute inductor,l=5<\henry>,i=$i_L$] (5,0) to [short] (0,0);
   \end{circuitikz}
   
@@ -366,12 +366,12 @@ v(t) = v(0^{+})e^{-10t}
 Note that the initial value of voltage here is denoted by $v(0^{+})$, as the voltage across the resistor 
 may change discontinuously when the switch is thrown. We have to use the fact that $i_L$ cannot 
 change discontinuously, and remains the same just before and just after the switch is 
-thrown. From \ref{fig:prior_t_0}, $i_l(0) = 24/10 = 2.4\text{A}$. Hence, $v(0^{+}) = (40)\cdot(-2.4)=-96\text{V}$, and
+thrown. From \ref{fig:prior_t_0}, $i_l(0) = 24/10 = 2.4\si{\ampere}$. Hence, $v(0^{+}) = (40)\cdot(-2.4)=-96\si{\volt}$, and
 so
 \begin{equation*}
 \boxed{v(t) = -96e^{-10t}}
 \end{equation*}
-which gives $v(0.2) = -12.99\text{V}$.
+which gives $v(0.2) = -12.99\si{\volt}$.
 \end{tcolorbox}
 %{\color{red} \rule{\linewidth}{0.5mm}}
 
@@ -423,8 +423,8 @@ Let us illustrate this using the following example:\\~\\
   \centering
   
   \begin{circuitikz}[american, scale=0.6, transform shape]
-	\draw (0,0) -- (0,5) to [R=120<\Omega>] (4,5) to [R=60<\Omega>] (4,3) to [cute inductor,
-		l=1<\milli\henry>, i=$i_L$] (8,3) to [R=50<\Omega>] (9,3) to [short, -*] (10,3)to[cute inductor,
+	\draw (0,0) -- (0,5) to [R=120<\ohm>] (4,5) to [R=60<\ohm>] (4,3) to [cute inductor,
+		l=1<\milli\henry>, i=$i_L$] (8,3) to [R=50<\ohm>] (9,3) to [short, -*] (10,3)to[cute inductor,
 		l=2<\milli\henry>] (10,0)to [short, -*](10,0) to [short] (0,0);
 	\draw (10,3) -- (12,3) to [cute inductor, l=3<\milli\henry>] (12,0) to [short, -*] (4,0)
 		to [R, l_=$90\Omega$,i_<=$i_1$] (4,3) to [short, -*] (4,3) to [opening switch,l=${t=0s}$, *-*] (2,3)
@@ -438,11 +438,11 @@ Let us illustrate this using the following example:\\~\\
   \centering
   
  \begin{circuitikz}[american, scale=0.6, transform shape]
-	\draw (0,0) -- (0,5) to [R=120<\Omega>] (2,5) to [R=60<\Omega>] (2,3) to [cute inductor,
-		l=1<\milli\henry>, i=$i_L$] (6,3) to [R=50<\Omega>] (7,3) to [short, -*] (8,3)to[cute inductor,
+	\draw (0,0) -- (0,5) to [R=120<\ohm>] (2,5) to [R=60<\ohm>] (2,3) to [cute inductor,
+		l=1<\milli\henry>, i=$i_L$] (6,3) to [R=50<\ohm>] (7,3) to [short, -*] (8,3)to[cute inductor,
 		l=2<\milli\henry>] (8,0)to [short, -*](8,0) to [short] (0,0);
 	\draw (8,3) -- (10,3) to [cute inductor, l=3<\milli\henry>] (10,0) to [short, -*] (2,0)
-		to [R, l_=$90\Omega$,i<=$i_1$] (2,3)to [short, -*] (2,3);
+		to [R, l_=90<\ohm>,i<=$i_1$] (2,3)to [short, -*] (2,3);
   \end{circuitikz}
   
   \caption{The simplified circuit after $t=0$}
@@ -456,11 +456,11 @@ $t>0$.\\~\\
 
 
 Firstly, note that the equivalent/Th\'{e}venin resistance seen by all three inductances is equal, and equal
-to $50 + 90||(120 + 60) =110\Omega$. So, we can reduce it to a simple LR circuit, with
+to $50 + 90||(120 + 60) =110\si{\volt}$. So, we can reduce it to a simple LR circuit, with
 
 \begin{align*}
-L_{eq} &= \frac{2 \cdot 3}{2+3} + 1 = 2.2 mH\\
-\Rightarrow \uptau &= \frac{L_{eq}}{R_{eq}} = 20\mu s 
+L_{eq} &= \frac{2 \cdot 3}{2+3} + 1 = 2.2 \si{\milli\henry}\\
+\Rightarrow \uptau &= \frac{L_{eq}}{R_{eq}} = 20 \si{\micro\second} 
 \end{align*}
 And so every current and voltage in the network must have the form $Ke^{-t/\uptau}=Ke^{-50,000t}$.
 If we consider the circuit prior to opening the switch and after all transients have died down, the
@@ -469,8 +469,8 @@ also be the value of $i_L$ just after the switch is opened. So,
 
 \begin{equation*}
 i_L = \begin{cases} 
-          360 mA & t < 0 \\
-          360e^{-50,000t} mA & 0\leq t 
+          360 \si{\milli\ampere} & t < 0 \\
+          360e^{-50,000t} \si{\milli\ampere} & 0\leq t 
        \end{cases}
 \end{equation*}
 
@@ -485,8 +485,8 @@ Hence,
 
 \begin{equation*}
 i_1 = \begin{cases} 
-          200 mA & t < 0 \\
-          -240e^{-50,000t} mA & 0\leq t 
+          200 \si{\milli\ampere} & t < 0 \\
+          -240e^{-50,000t} \si{\milli\ampere} & 0\leq t 
        \end{cases}
 \end{equation*}
 \end{tcolorbox}
@@ -607,7 +607,7 @@ each drawing as it looks nicer.\\~\\
 \begin{subfigure}{.33\textwidth}
 	\centering
   	\begin{circuitikz}[american]
-	\draw (0,0) to [american voltage source, l=$5u(t-2)V$] (0,3) -- (1,3);
+	\draw (0,0) to [american voltage source, l=$5u(t-2)\si{\volt}$] (0,3) -- (1,3);
 	\draw (0,0) -- (1,0);
 	\filldraw [fill=blue!20!white, draw=blue!20!black] (1,-0.25) rectangle (3,3.25); 
 	\draw (2,1.5) node [align=center] {General\\ Network};
@@ -618,7 +618,7 @@ each drawing as it looks nicer.\\~\\
 \begin{subfigure}{.33\textwidth}
 	\centering
 	\begin{circuitikz}[american]
-	\draw (0,0) to [american voltage source, v=5<\volt>](0,2)to[closing switch, l=${t=2s}$] (0,3) -- (1,3);
+	\draw (0,0) to [american voltage source, v=5<\volt>](0,2)to[closing switch, l=${t=2\si{\second}}$] (0,3) -- (1,3);
 	\draw (0,0) -- (1,0);
 	\filldraw [fill=blue!20!white, draw=blue!20!black] (1,-0.25) rectangle (3,3.25); 
 	\draw (2,1.5) node [align=center] {General\\ Network};
@@ -648,8 +648,9 @@ each drawing as it looks nicer.\\~\\
 Interestingly, the physical equivalent of the unit step is not actually a simple voltage source in series
 with a switch. Consider the step voltage source shown in figure  \ref{fig:voltage_step}. Let us try to draw it's physical 
 equivalent. On first thought, one might come up with figure \ref{fig:wrong_eq}. However, these two circuits are not
-equivalent for $t<2s$: the voltage across the network in figure  \ref{fig:wrong_eq} is completely unspecified in this time interval. The actual equivalent to the step voltage source is the single-pole double throw switch shown in
-figure \ref{fig:right_eq}. Clearly, the voltage is zero for $t<2s$, and this is consistent with the step voltage function.
+equivalent for $t<2\si{\second}$: the voltage across the network in figure  \ref{fig:wrong_eq} is completely unspecified in this time interval. 
+The actual equivalent to the step voltage source is the single-pole double throw switch shown in
+figure \ref{fig:right_eq}. Clearly, the voltage is zero for $t<2\si{\second}$, and this is consistent with the step voltage function.
 
 \color{blue}
 \subsubsection{The Rectangular Pulse Function}
@@ -903,9 +904,9 @@ Determine an expression for $v(t)$ in the circuit of figure \ref{fig:example_2.3
 \begin{figure}[H]
     \centering
     \begin{circuitikz}[american]
-        \draw (0,0) to [dcisource, fill=yellow, l=$5e^{-2000t}A$] (0,3)-- (2,3) to [R=10<\Omega>] (5,3) to 
-                [C=22<\micro \farad>, voltage shift=2.5,v=$v$] (5,0) -- (0,0);
-        \draw (2,3) to [short, -*] (2,3) to [R=4.7<\Omega>] (2,0) to [short, -*] (2,0);
+        \draw (0,0) to [dcisource, fill=yellow, l=$5e^{-2000t}\si{\ampere}$] (0,3)-- (2,3) to [R=10<\ohm>] (5,3) to 
+                [C=22<\micro\farad>, voltage shift=2.5,v=$v$] (5,0) -- (0,0);
+        \draw (2,3) to [short, -*] (2,3) to [R=4.7<\ohm>] (2,0) to [short, -*] (2,0);
     \end{circuitikz}
     \caption{An RC circuit forced by an exponentially decaying function}
     \label{fig:example_2.3}
@@ -919,10 +920,10 @@ v(t) = v_f + v_n
 Where $v_n$ is of the form $Ae^{it/\uptau}$ and $v_f$ is reminiscent of the exponential forcing function. To calculate the time constant for this
 circuit, note that the Th\'{e}venin resistance across the capacitor is
 \begin{equation*}
- R_{eq} = 4.7 + 10 = 14.7\Omega
+ R_{eq} = 4.7 + 10 = 14.7\si{\ohm}
 \end{equation*}
-and hence our time constant is $\uptau = R_{eq} \cdot C = 323.4 \mu s$. At this point, it will be convenient to perform a source transformation
-resulting in a voltage source $23.5e^{-2000t}$ in series with $14.7\Omega$ and $22 \mu F$. Applying Kirchhoff's loop law,
+and hence our time constant is $\uptau = R_{eq} \cdot C = 323.4 \si{\micro\second}$. At this point, it will be convenient to perform a source transformation
+resulting in a voltage source $23.5e^{-2000t}$ in series with $14.7\si{\ohm}$ and $22 \si{\micro\farad}$. Applying Kirchhoff's loop law,
 
 \begin{align*}
 23.5e^{-2000t} &= (14.7)(22\cdot 10^{-6})\frac{dv}{dt} + v\\
@@ -942,7 +943,7 @@ we find that $P=1/\uptau=3.092\cdot 10^{3}$ and $Q(t)=72.67\cdot 10^{3}e^{-2000t
 and since the voltage across a capacitor cannot change discontinuously with time, our initial conditions are $v(0^-)=v(0^+)=0$. Incorporating
 these into our response, finally we get
 \begin{equation*}
- v(t) = 66.55(e^{-2000t} - e^{-3092})V 
+ v(t) = 66.55(e^{-2000t} - e^{-3092})\si{\volt}
 \end{equation*}
 
 for $t>0s$. Is this expected? We have one term of the form $e^{-2000t}$, our forcing function and one term of the form $e^{-3092}$, our natural
@@ -1279,7 +1280,28 @@ v(t) = A_1e^{s_1t} + A_2e^{s_2t}
 \end{equation*}
 
 is then the sum of two exponentially decreasing terms, both of which approach zero as the time increases. What remains is to determine the constants
-$A_1$ and $A_2$ in conformance with the initial conditions. We shall illustrate this using an example.
+$A_1$ and $A_2$ in conformance with the initial conditions. We shall illustrate this using an example. \\~\\
+
+\begin{tcolorbox}[colback=red!5, colframe=red!75!black, title=\textbf{Example 3.1}, breakable]
+
+For the circuit given in Fig.\ref{fig:parallel_rlc_ex}, determine an expression for the resistor current $i_R$ valid for all time.
+
+\begin{figure}[H]
+\centering
+\begin{circuitikz}[american, scale=0.85, transform shape]
+    \draw (0,0) to[american voltage source, l=4<\volt>] ++(0,3) to [R=2<\ohm>] ++(3,0) to [cute inductor, l=12<\milli\henry>] ++(4,0)
+            -- ++(1,0) to [C=2<\pico\farad>] ++(0,-3) -- (0,0);
+    \draw (3,3) node[circ]{} to [closing switch, l=${t=0}$] ++(0,-3) node[circ]{};
+    \draw (6,3) node[circ]{} to [R=30<\kilo\ohm>, i=$i_R$] ++(0,-3) node[circ]{};
+\end{circuitikz}
+\caption{Circuit for which $i_R$ is required}
+\label{fig:parallel_rlc_ex}
+\end{figure}
+
+
+
+\end{tcolorbox}
+
 
 \end{flushleft}
 \end{document}
