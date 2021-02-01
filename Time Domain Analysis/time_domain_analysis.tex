@@ -1400,7 +1400,29 @@ This response is plotted in Fig.\ref{fig:overdamped_plot} .
 \end{figure}%
 \end{tcolorbox}
 
-From the above figure, it is clear
+If we consider this response as the superposition of $84e^{-t}$ and $84e^{-6t}$, it is clear from the figure that as time goes on, the $84e^{-t}$ factor is more dominant and $84e^{-6t}$ becomes negligible.
+
+\color{blue}
+\subsubsection{Critical Damping}
+\color{black}
+
+Critical damping is achieved when 
+
+\begin{equation*}
+\textit{critical damping} \begin{cases} 
+          \alpha = \omega_0 \\
+          LC = 4R^2C^2\\
+          L = 4R^2C
+       \end{cases}
+\end{equation*}
+
+Here the common root $s$ comes out to be equal to $\alpha$.\\
+The response in this case is \textit{not} given by $Ae^{st}$. Even intuitively, we can observe that this soution contains only one arbitrary constant, whereas our differential equation is second order. From any standard text on differential equations, we find that the actual response is 
+
+\begin{equation}
+v(t) = e^{-\alpha t}(A_1t + A_2)
+\end{equation}
+
 
 \end{flushleft}
 \end{document}
