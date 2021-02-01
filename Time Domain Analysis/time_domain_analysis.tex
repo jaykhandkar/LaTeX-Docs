@@ -1343,7 +1343,64 @@ i_R = \begin{cases}
 \end{equation*}
 \end{tcolorbox}
 
+Let us now try to graphically represent the overdamped response. For this purpose, we shall consider a parallel RLC circuit with ``nicer'' values
+of the components: $R = 6\si{\ohm}$, $L = 7\si{\henry}$ and $C = \frac{1}{42}\si{\farad}$. With the initial conditions $v(0) = 0$ and $i_L(0)=10$,
+the response is 
 
+\begin{equation*}
+v(t) = 84(e^{-t} - e^{-6t})
+\end{equation*}
+
+This response is plotted in Fig.\ref{fig:overdamped_plot} .
+
+ \begin{tcolorbox}
+ \begin{figure}[H]
+	\centering
+  \begin{tikzpicture}
+	\begin{axis}[
+        axis lines = middle,
+        ytick = {-20,20,40,60,80},xtick={1,2,3,4},
+		x label style = {at={(axis description cs:1,0.1818)},anchor=west},
+		y label style = {at={(axis description cs:0.0909,1)},anchor=south},
+    	xlabel = $t$,
+    	ylabel = {$v(t)$},
+   	 ymin = -20, ymax = 90,
+   	 xmin=-0.5, xmax=5
+	]
+    
+    \addplot[
+        color = RubineRed,
+        samples = 100,
+        domain = 0:5, thick
+    ]{84*(exp{-x} - exp{-6*x})};
+    \addplot[
+        color = gray,
+        samples = 100,
+        domain = 0:5
+    ]{84*exp{-6*x}};
+    \addplot[
+        color = gray,
+        samples = 100,
+        domain = 0:5
+    ]{84*exp{-x}};
+
+
+	%following code is just a way to label zero for middle axis
+	\node[
+    anchor=north east,
+    outer sep=.5*\pgflinewidth+.5*\pgfkeysvalueof{/pgfplots/major tick length},
+    %draw,green% to show the border of the node
+    ]
+    at({xticklabel* cs:0}-|{yticklabel* cs:0})
+    {\pgfmathprintnumber{0}};
+	\end{axis}
+	\end{tikzpicture}
+  \caption{The overdamped response}
+  \label{fig:overdamped_plot}
+\end{figure}%
+\end{tcolorbox}
+
+From the above figure, it is clear
 
 \end{flushleft}
 \end{document}
