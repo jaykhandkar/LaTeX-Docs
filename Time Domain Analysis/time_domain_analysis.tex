@@ -69,9 +69,9 @@ v &= L\frac{di}{dt}
 \fbox{
 \begin{circuitikz}[american]
 	
-	\draw (0,0) to[short, i=$i$] (1,0) to[C, l=$C$, v_=$v$, o-o, voltage shift=2.5] (2,0) 
+	\draw (0,0) to[short, i=$i$] (1,0) to[C, l=$C$, v=$v$, o-o, voltage shift=2.5] (2,0) 
 	to[short] (3,0);
-	\draw (0,-2) to[short, i=$i$] (1,-2) to[cute inductor, l=$L$, v^=$v$, o-o, voltage shift=5.0] (2,-2) 		to[short] (3,-2);
+	\draw (0,-2) to[short, i=$i$] (1,-2) to[cute inductor, l=$L$, v_=$v$, o-o, voltage shift=3.5] (2,-2) 		to[short] (3,-2);
 	
 \end{circuitikz}
 }
@@ -1423,6 +1423,7 @@ The response in this case is \textit{not} given by $Ae^{st}$. Even intuitively, 
 v(t) = e^{-\alpha t}(A_1t + A_2)
 \end{equation}
 
+Note that this equation contains two arbitrary constants $A_1$ and $A_2$ and therefore is the correct solution to our differential equation.
 
 \end{flushleft}
 \end{document}
