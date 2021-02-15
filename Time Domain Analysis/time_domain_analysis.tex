@@ -163,6 +163,7 @@ which is the total energy stored initially in the inductor, as expected.
 \centering
 \begin{tikzpicture}
 \begin{axis}[
+    grid = both,
 	legend pos = north east,
     axis lines = left,
     ytick={1}, xtick={0},
@@ -229,6 +230,7 @@ finding where it intersects the $x$ axis, as shown below:
 \centering
 \begin{tikzpicture}
 \begin{axis}[
+    grid = both,
 	ytick={1}, xtick={0,2},
 	x label style = {at={(1,0)},anchor=west},
 	y label style = {at={(0,1)},rotate=-90,anchor=south},
@@ -270,6 +272,7 @@ also be determined from this fact:\\~\\
 \centering
 \begin{tikzpicture}
 \begin{axis}[
+    grid = both, minor tick num = 5,
 	ytick={0.1353,0.3679,1}, xticklabels={0, $\uptau$, $2\uptau$},xtick={0,2,4},
 	x label style = {at={(1,0)},anchor=west},
 	y label style = {at={(0,1)}, rotate=-90, anchor=south},
@@ -894,6 +897,41 @@ i(t) = \frac{V_0}{R}(1-e^{-Rt/L})u(t)
 \end{figure}%
 \end{tcolorbox}
 
+\begin{tcolorbox}[colback=brown!5, colframe=brown!75!black, title=\textbf{Why we can break the complete response into two parts}, breakable]
+
+There is a mathematical reason to why we can break the forced response $i$ into a sum of response, $i_n$ and $i_f$. Consider the differential
+equation governing the forced response, a first order non-homogenous differential equation:
+
+\begin{equation}
+\label{equation:fr_non_homo}
+ Ri + L\frac{di}{dt} = V_0
+\end{equation}
+
+Let us say we have a solution to the homogenous part of \ref{equation:fr_non_homo}, $i_n$, so that
+
+\begin{equation*}
+ Ri_n + L\frac{di_n}{dt} = 0
+\end{equation*}
+
+And let us say we have some solution $i_f$ to \ref{equation:fr_non_homo} itself, so that
+
+\begin{equation*}
+ Ri_f + L\frac{di_f}{dt} = V_0
+\end{equation*}
+
+Adding the above two equations, we have:
+
+\begin{equation*}
+R(i_n + i_f) + L\frac{d}{dt}(i_n + i_f) = 0
+\end{equation*}
+
+meaning that $i_n + i_f$ satisfies \ref{equation:fr_non_homo} just as well as $i_f$ alone. So we have no reason to discard the contribution of
+$i_n$. From a physical point of view, $i_n$ is the natural response, more commonly known as transient response in mechanics, and $i_f$ is 
+the forced response, known as the steady state response in mechanics. It may be verified that the same holds true for second order 
+non-homogenous differential equations, or second-order forced circuits.
+
+\end{tcolorbox}
+
 The procedure to find the forced response for driven RC circuits is exactly the same as that for RL circuits. We won't repeat it here, but will
 instead illustrate it with the following example:\\~\\
 
@@ -1358,6 +1396,7 @@ This response is plotted in Fig.\ref{fig:overdamped_plot} .
 	\centering
   \begin{tikzpicture}
 	\begin{axis}[
+        grid = both,
         axis lines = middle,
         ytick = {-20,20,40,60,80},xtick={1,2,3,4},
 		x label style = {at={(axis description cs:1,0.1818)},anchor=west},
