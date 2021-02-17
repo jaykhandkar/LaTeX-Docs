@@ -17,6 +17,11 @@
 \usepackage{upgreek}
 \usepackage[margin=1in,headheight=13.6pt]{geometry}
 \usepackage{fancyhdr}
+\usepackage{titlesec}
+
+\titleformat*{\section}{\LARGE\bfseries}
+\titleformat*{\subsection}{\Large\bfseries}
+\titleformat*{\subsubsection}{\large\bfseries}
 
 \tcbuselibrary{breakable}
 \pagestyle{fancy}
@@ -1582,11 +1587,27 @@ and
 \end{align*}
 
 For a critically damped response, these two values must be equal, hence $R_1 = 31.63 \si{\kilo\ohm}$.
-
-
-
-
 \end{tcolorbox}
+
+\color{blue}
+\subsubsection{Underdamped Response}
+\textbf{Form of the Underdamped Response}
+\color{black}
+\\~\\
+The exponential form of the response is
+
+\begin{equation*}
+v(t) = A_1e^{s_1t} + A_2e^{s_2t}
+\end{equation*}
+
+where
+
+\begin{equation*}
+s_{1,2} = -\alpha \pm \sqrt{\alpha^2 - \omega_0^2}
+\end{equation*}
+
+For the overdamped case, we have $\alpha < \omega_0$
+
 
 
 \end{flushleft}
