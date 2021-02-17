@@ -1508,9 +1508,10 @@ The response is plotted in figure \ref{fig:critical_plot}.
 	\centering
   \begin{tikzpicture}
 	\begin{axis}[
-        grid = both,
-        axis lines = middle,
-        yticklabels = \empty, xticklabels = \empty,
+        grid = major,
+        extra tick style = {grid = none},
+        axis lines = middle, tick align = outside,
+        extra y ticks = {63.1}, yticklabels = \empty, extra x ticks = {0.418}, extra x tick labels = {$t_m$}, xticklabels=\empty,
 		x label style = {at={(axis description cs:1,0.1818)},anchor=west},
 		y label style = {at={(axis description cs:0.0909,1)},anchor=south},
     	xlabel = $t$,
@@ -1524,6 +1525,9 @@ The response is plotted in figure \ref{fig:critical_plot}.
         samples = 100,
         domain = 0:5, thick
     ]{420*x*exp{-2.45*x}};
+    
+    \addplot[dashed, black, thick] coordinates {(0.418,0) (0.418,63.1)};
+    \addplot[dashed, black, thick] coordinates {(0.418,63.1) (0,63.1)};
 
 	%following code is just a way to label zero for middle axis
 	\node[
