@@ -1302,6 +1302,7 @@ and the natural response of the parallel RLC is
 v(t) = A_1e^{s_1t} + A_2e^{s_2t}
 \end{equation}
 
+where $A_1$ and $A_2$ may be complex numbers.
 The three conditions imposed on the discriminant of the quadratic give rise to three different types of responses, known as
 
 \begin{itemize}
@@ -1384,7 +1385,10 @@ i_R = \begin{cases}
        \end{cases}
 \end{equation*}
 \end{tcolorbox}
-
+\color{blue}
+\textbf{Graphical Form of the Overdamped Response}
+\color{black}
+\\~\\
 Let us now try to graphically represent the overdamped response. For this purpose, we shall consider a parallel RLC circuit with ``nicer'' values
 of the components: $R = 6\si{\ohm}$, $L = 7\si{\henry}$ and $C = \frac{1}{42}\si{\farad}$. With the initial conditions $v(0) = 0$ and $i_L(0)=10$,
 the response is 
@@ -1466,7 +1470,12 @@ The response in this case is \textit{not} given by $Ae^{st}$. Even intuitively, 
 v(t) = e^{-\alpha t}(A_1t + A_2)
 \end{equation}
 
-Note that this equation contains two arbitrary constants $A_1$ and $A_2$ and therefore is the correct solution to our differential equation.\\
+Note that this equation contains two arbitrary constants $A_1$ and $A_2$ and therefore is the correct solution to our differential equation.\\~\\
+
+\color{blue}
+\textbf{Graphical Form of the Critically Damped Response}
+\color{black}
+\\~\\
 
 \begin{figure}[H]
 \centering
@@ -1606,7 +1615,157 @@ where
 s_{1,2} = -\alpha \pm \sqrt{\alpha^2 - \omega_0^2}
 \end{equation*}
 
-For the overdamped case, we have $\alpha < \omega_0$
+For the overdamped case, we have $\alpha < \omega_0$, and so we let
+
+\begin{equation*}
+\sqrt{\alpha^2 - \omega_0^2} = \sqrt{-1}\sqrt{\omega_0^2 - \alpha^2} = j\sqrt{\omega_0^2 - \alpha^2}
+\end{equation*}
+
+where $\sqrt{\omega_0^2 - \alpha^2}$ is a real quantity and is denoted by $\omega_d$, called the \textit{\textbf{natural resonant frequency}}:
+
+\begin{equation*}
+\omega_d = \sqrt{\omega_0^2 - \alpha^2}
+\end{equation*}
+
+The response may now be written in terms of $\omega_d$, converting complex exponentials into sines and cosines:
+
+\begin{align*}
+v(t) &= e^{-\alpha t}(A_1e^{j\omega_dt} + A_2e^{j\omega_dt})\\
+&= e^{-\alpha t}((A_1 + A_2)\cos{\omega_dt} + j(A_1 - A_2)\sin{\omega_dt})
+\end{align*}
+
+Introducing new constants:
+
+\begin{equation}
+\label{equation:underdamped_eq}
+v(t) = e^{-\alpha t}(B\cos{\omega_dt} + C\sin{\omega_dt})
+\end{equation}
+
+At first it may seem a little strange that the complex part of our response has simply vanished. However, we had originally allowed for $A_1$ and
+$A_2$ to be complex. In any case it is easily verified that equation \ref{equation:underdamped_eq} is indeed a solution of 
+\ref{equation:parallel_rlc} by simple substitution.\\
+Let us now return to our previous example of figure \ref{fig:parallel_rlc_ex}, but with $R = 10.5\si{\ohm}$, $C=1/42\si{\farad}$ and $L=7\si{\henry}$. Thus, 
+
+\begin{align*}
+\alpha &= \frac{1}{2RC} = 2 s^{-2}
+\omega_0 &= \frac{1}{\sqrt{LC}} = \sqrt{6} \si{\radian\per\second}
+\omega_d &= \sqrt{\omega_0^2 - \alpha^2} = \sqrt{6 - 4} = \sqrt{2} \si{\radian\per\second}
+\end{align*}
+
+and so our response is 
+
+\begin{equation*}
+v(t) = e^{-2t}(B_1\cos{\sqrt{2}t} + B_2\sin{\sqrt{2}t})
+\end{equation*}
+
+Fitting in our initial conditions $i(0) = 0$ and $v(0) = 0$, we find that the exact response is
+
+\begin{equation*}
+v(t) = 210\sqrt{2}e^{-2t}\sin{\sqrt{2}t}
+\end{equation*}
+
+\color{blue}
+\textbf{Graphical Form of the Underdamped Response}
+\color{black}
+\\~\\
+
+The underdamped response of equation \ref{equation:underdamped_eq} can be thought of as a sinusoid with exponentially decreasing amplitude. For
+large values of $\alpha$, the response quickly dies out and the oscillatory nature is not very clear. The response of our previous example
+is plotted in figure \ref{fig:underdamp_plot_example}.\\~\\
+
+\begin{tcolorbox}
+ \begin{figure}[H]
+	\centering
+  \begin{tikzpicture}
+	\begin{axis}[
+        enlarge x limits = 1,
+        grid = major,
+        xtick distance = 1,
+        ytick distance = 20,
+        axis lines = middle,
+		x label style = {at={(axis description cs:1,0.166)},anchor=west},
+		y label style = {at={(axis description cs:0.111,1)},anchor=south},
+    	xlabel = $t$,
+    	ylabel = {$v(t)$},
+        ymin = -20, ymax = 100,
+        xmin=-0.5, xmax=4
+	]
+    
+    \addplot[
+        color = RubineRed,
+        samples = 100,
+        domain = 0:4
+    ]{1.414*210*exp(-2*x)*sin(deg(1.4142*x))};
+
+	%following code is just a way to label zero for middle axis
+	\node[
+    anchor=north east,
+    outer sep=.5*\pgflinewidth+.5*\pgfkeysvalueof{/pgfplots/major tick length},
+    %draw,green% to show the border of the node
+    ]
+    at({xticklabel* cs:0}-|{yticklabel* cs:0})
+    {\pgfmathprintnumber{0}};
+	\end{axis}
+	\end{tikzpicture}
+  \caption{The response for our example}
+  \label{fig:underdamp_plot_example}
+\end{figure}%
+\end{tcolorbox}
+
+Let us now plot a response characterized by
+
+\begin{equation*}
+v(t) = e^{-0.5x}\cos{10x}
+\end{equation*}
+\\~\\
+which is plotted in figure \ref{fig:underdamp_oscill} and shows much sharper oscillatory behaviour.\\ If $\alpha$ is $0$, corresponding to an infinitely large resistance, the response is an undamped sinusoid of constant amplitude. In such a case, we provide the circuit with some initial
+energy and give it no means to dissipate that energy: it simply keeps oscillating back and forth between the capacitor and inductor.\\
+The effect of a finite resistance in the RLC circuit can be thought of as an electrical transfer agent. Everytime energy is transferred from L
+to C, some amount is dissipated through the resistor. Eventually, the resistor has dissipated all of the energy and the capacitor and inductor
+are left with none.
+
+
+\begin{tcolorbox}
+ \begin{figure}[H]
+	\centering
+  \begin{tikzpicture}[scale=1.25]
+	\begin{axis}[
+        grid = major,
+        axis lines = middle,
+        xticklabels = \empty, yticklabels = \empty,
+		x label style = {at={(axis description cs:1,0.5)},anchor=west},
+		y label style = {at={(axis description cs:0.5,1)},anchor=south},
+    	xlabel = $t$,
+    	ylabel = {$v(t)$},
+        ymin = -6, ymax = 6,
+        xmin=-4, xmax=4
+	]
+    
+    \addplot[
+        color = red,
+        samples = 1000,
+        domain = -4:4, smooth
+    ]{exp(-0.5*x)*cos(deg(10*x))};
+    
+     \addplot[
+        color = blue,
+        samples = 1000,
+        domain = -4:4, smooth
+    ]{-1*exp(-0.5*x)};
+    
+     \addplot[
+        color = green,
+        samples = 1000,
+        domain = -4:4, smooth
+    ]{exp(-0.5*x)};
+    
+	\end{axis}
+	\end{tikzpicture}
+  \caption{An underdamped response with a small value of $\alpha$}
+  \label{fig:underdamp_oscill}
+\end{figure}%
+\end{tcolorbox}
+
 
 
 
