@@ -1544,5 +1544,50 @@ The response is plotted in figure \ref{fig:critical_plot}.
 \end{figure}%
 \end{tcolorbox}
 
+\begin{tcolorbox}[colback=SkyBlue!5, colframe=SkyBlue!75!black, title=\textbf{Example 3.2}, breakable]
+
+Find a value of $R_1$ such that the circuit in figure \ref{fig:critical_parallel_rlc} will be characterized by a critically damped response for $t>0s$, and a value of $R_2$ such that $v(0) = 2\si{\volt}$
+
+\begin{figure}[H]
+\centering
+\begin{circuitikz}[american, scale=1.25, transform shape]
+    \draw (0,0) to [I, l=$5u(-t)\si{\ampere}$, fill=red] ++(0,4) -- ++(2,0) to [C, l_=$1\si{\nano\farad}$,*-*, v^=$\color{red}v$] ++(0,-4);
+    \draw (2,4) -- ++(2,0) to [R=$R_2$, *-*] ++(0,-2) to [cute inductor, l=$4\si{\henry}$, *-*] ++(0, -2);
+    \draw (4,4) -- ++(2,0) -- ++(0,-2) to [closing switch, l_=${t=0s}$, *-*] ++(-2,0);
+    \draw (6,2) -- ++(0,-2) -- ++(-6,0);
+\end{circuitikz}
+\caption{Circuit reduces to a parallel RLC after the switch is thrown}
+\label{fig:critical_parallel_rlc}
+\end{figure}
+
+At $t = 0^-$, the current source is on and the inductor may be treated as a short. Thus, 
+
+\begin{equation*}
+v(0^-) = 5R_2
+\end{equation*}
+
+and so $R_2 = 500 \si{\milli\ohm}$ for $v(0) = 2\si{\volt}$. For $t>0s$, the current source is off and $R_2$ is shorted. Thus it is a parallel
+RLC circuit and
+
+\begin{align*}
+\alpha &= \frac{1}{2RC}\\
+&= \frac{1}{2\cdot 10^{-9}C}
+\end{align*}
+
+and
+
+\begin{align*}
+\omega_0 &= \frac{1}{\sqrt{LC}} \\
+&= 15,810 \si{\radian\per\second}
+\end{align*}
+
+For a critically damped response, these two values must be equal, hence $R_1 = 31.63 \si{\kilo\ohm}$.
+
+
+
+
+\end{tcolorbox}
+
+
 \end{flushleft}
 \end{document}
