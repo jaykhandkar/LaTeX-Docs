@@ -163,7 +163,6 @@ which is the total energy stored initially in the inductor, as expected.
 \subsubsection{Properties Of The Natural Response}
 \color{black}
 
-\begin{tcolorbox}[colframe=black]
 \begin{figure}[H]
 \centering
 \begin{tikzpicture}
@@ -205,8 +204,6 @@ which is the total energy stored initially in the inductor, as expected.
 \caption{Some possible plots for the natural response}
 \label{fig:nat_resp}
 \end{figure}
-\end{tcolorbox}
-
 
 From the natural response of the series RL circuit given by Eq.\ref{equation:rl_nat_resp}, it is clear that
 that the current decays exponentially to zero from an initial value of $I_0$. The graph of $\frac{i}{I_0}$
@@ -230,7 +227,6 @@ The constant $\uptau$ has the units of seconds and is called the \textbf{time co
 It may be found graphically from the response curve by drawing the tangent to the curve at $t=0$ and
 finding where it intersects the $x$ axis, as shown below:
 
-\begin{tcolorbox}[colframe=black]
 \begin{figure}[H]
 \centering
 \begin{tikzpicture}
@@ -263,7 +259,6 @@ finding where it intersects the $x$ axis, as shown below:
 \caption{Finding the time constant graphically}
 \label{fig:finding_tau_graphically}
 \end{figure}
-\end{tcolorbox}
 
 Yet another way to define the time constant is to note that
 \begin{equation*}
@@ -272,7 +267,6 @@ Yet another way to define the time constant is to note that
 ie, in one time constant, the response falls to $36.8\%$ of it's initial value. The value of $\uptau$ may
 also be determined from this fact:\\~\\
 
-\begin{tcolorbox}[colframe=black]
 \begin{figure}[H]
 \centering
 \begin{tikzpicture}
@@ -303,7 +297,6 @@ also be determined from this fact:\\~\\
 \caption{Yet another way to find the time constant graphically}
 \label{fig:finding_tau_graphically_2}
 \end{figure}
-\end{tcolorbox}
 
 \begin{tcolorbox}[colback=red!5, colframe=red!75!black, title=\textbf{Example 2.1}, breakable]
 \begin{figure}[H]
@@ -520,7 +513,6 @@ u(t-t_0) = \begin{cases}
 
 or graphically as\\~\\
 
-\begin{tcolorbox}[colframe=black]
 \begin{figure}[H]
 \centering
 \begin{subfigure}{.5\textwidth}
@@ -604,7 +596,6 @@ or graphically as\\~\\
 \caption{The unit step function}
 \label{fig:unit_step}
 \end{figure}
-\end{tcolorbox}
 
 Note that the vertical line is not really a part of the unit step's definition but it is usally shown in
 each drawing as it looks nicer.\\~\\
@@ -676,7 +667,6 @@ v(t) = \begin{cases}
 Let us try to break this down into individual unit step functions. Figure \ref{fig:superposition_unit_steps} shows the superposition of the two step functions $u(t-t_0)$ and 
 $-u(t-t_1).$ Clearly, their superposition gives the rectangular pulse in figure \ref{fig:rect_pulse_}. \\~\\
 
-\begin{tcolorbox}[colframe=black]
 \begin{figure}[H]
 \centering
 \begin{subfigure}{.5\textwidth}
@@ -773,7 +763,6 @@ $-u(t-t_1).$ Clearly, their superposition gives the rectangular pulse in figure 
 \end{subfigure}
 \label{fig:rect_pulse}
 \end{figure}
-\end{tcolorbox}
 
 Breaking down rectangular pulses in terms of unit step functions can be quite handy for linear networks, for which we can simply consider individual
 unit step sources separately and add them to get the total response.
@@ -855,7 +844,7 @@ i(t) = \frac{V_0}{R}(1-e^{-Rt/L})u(t)
  
  The response is plotted in figure \ref{fig:forced_RC_plot}, and it is clear how $i$ rises from it's intial value of $0$ to it's forced value of $\frac{V_0}{R}$. In this 
  case, a tangent drawn to the response curve at $t=0$ meets the forced response at $t=\uptau$.\\~\\
- \begin{tcolorbox}
+ 
  \begin{figure}[H]
 	\centering
   \begin{tikzpicture}
@@ -899,7 +888,7 @@ i(t) = \frac{V_0}{R}(1-e^{-Rt/L})u(t)
   \caption{The plot of $i(t)$}
   \label{fig:forced_RC_plot}
 \end{figure}%
-\end{tcolorbox}
+
 
 \begin{tcolorbox}[colback=brown!5, colframe=brown!75!black, title=\textbf{Why we can break the complete response into two parts}, breakable]
 
@@ -994,7 +983,7 @@ even having to write down a single differential equation.
 
 \end{tcolorbox}
 
-The methods of finding a response for a forced circuit are summarised neatly below:
+The methods of finding a response for a forced circuit are summarised neatly below:\\~\\
 
 \begin{tcolorbox}[arc=0mm]
  \begin{enumerate}
@@ -1108,7 +1097,6 @@ t_2 = \ln(2)\cdot (R_B)\cdot C
 These are the standard expressions one may find in any datasheet. The output waveform across the capacitor and $Q$ is plotted in figure 
 \ref{fig:555_waveform}.
 
-\begin{tcolorbox}[colframe=black]
 \begin{figure}[H]
 \centering
 \begin{subfigure}{.5\textwidth}
@@ -1228,7 +1216,6 @@ These are the standard expressions one may find in any datasheet. The output wav
 \caption{The output waveforms of the 555 astable timer}
 \label{fig:555_waveform}
 \end{figure}
-\end{tcolorbox}
 
 \color{blue}
 \section{Second Order Circuits}
@@ -1399,7 +1386,6 @@ v(t) = 84(e^{-t} - e^{-6t})
 
 This response is plotted in Fig.\ref{fig:overdamped_plot} .
 
- \begin{tcolorbox}
  \begin{figure}[H]
 	\centering
   \begin{tikzpicture}
@@ -1445,7 +1431,6 @@ This response is plotted in Fig.\ref{fig:overdamped_plot} .
   \caption{The overdamped response}
   \label{fig:overdamped_plot}
 \end{figure}%
-\end{tcolorbox}
 
 If we consider this response as the superposition of $84e^{-t}$ and $84e^{-6t}$, it is clear from the figure that as time goes on, the $84e^{-t}$ factor is more dominant and $84e^{-6t}$ becomes negligible.
 
@@ -1517,7 +1502,6 @@ Let us try to represent it graphically. It's value at $t=0$ is $0$ and for large
 using L'H\^{o}spital's rule. By differentiating, we find that a maximum value occurs at time $t_m = 0.408s$ when $v = 63.1\si{\volt}$.
 The response is plotted in figure \ref{fig:critical_plot}.
 
-\begin{tcolorbox}
  \begin{figure}[H]
 	\centering
   \begin{tikzpicture}
@@ -1556,7 +1540,7 @@ The response is plotted in figure \ref{fig:critical_plot}.
   \caption{The critically damped response}
   \label{fig:critical_plot}
 \end{figure}%
-\end{tcolorbox}
+
 
 \begin{tcolorbox}[colback=SkyBlue!5, colframe=SkyBlue!75!black, title=\textbf{Example 3.2}, breakable]
 
@@ -1673,7 +1657,6 @@ The underdamped response of equation \ref{equation:underdamped_eq} can be though
 large values of $\alpha$, the response quickly dies out and the oscillatory nature is not very clear. The response of our previous example
 is plotted in figure \ref{fig:underdamp_plot_example}.\\~\\
 
-\begin{tcolorbox}
  \begin{figure}[H]
 	\centering
   \begin{tikzpicture}
@@ -1710,7 +1693,6 @@ is plotted in figure \ref{fig:underdamp_plot_example}.\\~\\
   \caption{The response for our example}
   \label{fig:underdamp_plot_example}
 \end{figure}%
-\end{tcolorbox}
 
 Let us now plot a response characterized by
 
@@ -1725,8 +1707,7 @@ to C, some amount is dissipated through the resistor. Eventually, the resistor h
 are left with none.
 
 
-\begin{tcolorbox}
- \begin{figure}[H]
+\begin{figure}[H]
 	\centering
   \begin{tikzpicture}[scale=1.25]
 	\begin{axis}[
@@ -1764,7 +1745,6 @@ are left with none.
   \caption{An underdamped response with a small value of $\alpha$}
   \label{fig:underdamp_oscill}
 \end{figure}%
-\end{tcolorbox}
 
 
 
