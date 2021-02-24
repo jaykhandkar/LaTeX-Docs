@@ -64,6 +64,42 @@ The equations of motion, considering small angle approximations ($\sin{\theta} \
 m\frac{d^2x_a}{dt^2} &= -mg\frac{x_a}{l} + k(x_b - x_a)\\
 m\frac{d^2x_b}{dt^2} &= -mg\frac{x_b}{l} - k(x_b - x_a)
 \end{align*}
+or
+
+\begin{align}
+\label{equation:two_cp_pendulums_1}
+\ddot x_a + (\omega_0^{2} + \omega_c^{2})x_a - \omega_c^{2}x_b= 0\\
+\label{equation:two_cp_pendulums_2}
+\ddot x_b + (\omega_0^{2} + \omega_c^{2})x_b - \omega_c^{2}x_a= 0
+\end{align}
+
+where we have let $\omega_0^2 = \frac{g}{l}$ and  $\omega_c^2 = \frac{k}{m}$
+
+\section{Normal Modes}
+
+Before we try to solve equations \ref{equation:two_cp_pendulums_1} and \ref{equation:two_cp_pendulums_2} for the most general motion of the system,
+let us consider what happens when we draw both $A$ and $B$ aside by equal amounts and release them. The spring remains relaxed and exerts no force
+on either masses. Both of them then oscillate with the same natural frequency $\omega_0$:
+
+\begin{align*}
+x_a &= C\cos{\omega_0t}\\
+x_b &= C\cos{\omega_0t}
+\end{align*}
+
+This is known as a \textit{normal mode of oscillation}, where all masses oscillate with the same frequency. For this system, there is yet another
+normal mode: pull $A$ and $B$ aside by equal amounts but in opposite direction. The equation of motion for $A$ is 
+
+\begin{align*}
+\ddot x_a + (\omega_0^{2} + 2\omega_c^{2})x_a = 0\\
+\end{align*}
+
+which is readily identified as a simple harmonic motion of frequency $\omega^{'} = (\omega_0^2 + 2\omega_c^2)^{1/2}$ so that
+
+\begin{align*}
+x_a &= C\cos{\omega^{'}t}\\
+x_b &= -C\cos{\omega^{'}t}
+\end{align*}
+
 
 
 \end{document}
