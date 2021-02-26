@@ -4,6 +4,7 @@
 \usepackage{amsmath}
 \usepackage{hyperref}
 \usepackage{subcaption}
+\usepackage{pgfplots}
 \usetikzlibrary{decorations.pathmorphing,patterns}
 \usetikzlibrary{calc,patterns,decorations.markings}
 \usetikzlibrary{positioning}
@@ -214,9 +215,121 @@ x_a &= A_0\cos{\frac{\omega\prime - \omega_0}{2}t}\cos{\frac{\omega\prime + \ome
 x_b &= A_0\sin{\frac{\omega\prime - \omega_0}{2}t}\sin{\frac{\omega\prime + \omega_0}{2}t}\\
 \end{align*}
 
-These motions are plotted in figure . We see that $A$ starts swinging initially, but it's amplitude continuously decreases. Pendulum $B$, initially
+These motions are plotted in figure \ref{fig:two_cp_plot}. We see that $A$ starts swinging initially, but it's amplitude continuously decreases. Pendulum $B$, initially
 at rest, starts oscillating and soon the amplitudes of $A$ and $B$ become equal. The amplitude of $A$ then diminishes towards zero and the amplitude
 of $B$ becomes that of $A$ originally. The spring is therefore acting as a kind of energy transfer agent between the two pendulums.
+
+\begin{figure}[!h]
+	\centering
+  \begin{tikzpicture}
+	\begin{axis}[
+        axis lines=middle,
+        xticklabels = \empty, yticklabels = \empty,
+		x label style = {at={(axis description cs:1,0.5)},anchor=west},
+		y label style = {at={(axis description cs:0.5,1)},anchor=south},
+    	xlabel = $t$,
+    	ylabel = {$x_a(t)$},
+        ymin = -2.5, ymax = 2.5,
+        xmin=-10, xmax=10
+	]
+    
+    \addplot[
+        color = blue,
+        samples = 1000,
+        domain = -10:10, smooth
+    ]{cos(deg(0.5*x))};
+    
+     \addplot[
+        color = blue,
+        samples = 1000,
+        domain = -10:10, smooth
+    ]{-1*cos(deg(0.5*x))};
+    
+     \addplot[
+        color = red,
+        samples = 1000,
+        domain = -10:10, smooth
+    ]{cos(deg(0.5*x))*cos(deg(6.5*x))};
+    
+	\end{axis}
+	\end{tikzpicture}
+\end{figure}%
+
+\begin{figure}[!h]
+	\centering
+  \begin{tikzpicture}
+	\begin{axis}[
+        axis lines=middle,
+        xticklabels = \empty, yticklabels = \empty,
+		x label style = {at={(axis description cs:1,0.5)},anchor=west},
+		y label style = {at={(axis description cs:0.5,1)},anchor=south},
+    	xlabel = $t$,
+    	ylabel = {$x_b(t)$},
+        ymin = -2.5, ymax = 2.5,
+        xmin=-10, xmax=10
+	]
+    
+    \addplot[
+        color = blue,
+        samples = 1000,
+        domain = -10:10, smooth
+    ]{sin(deg(0.5*x))};
+    
+     \addplot[
+        color = blue,
+        samples = 1000,
+        domain = -10:10, smooth
+    ]{-1*sin(deg(0.5*x))};
+    
+     \addplot[
+        color = red,
+        samples = 1000,
+        domain = -10:10, smooth
+    ]{sin(deg(0.5*x))*sin(deg(6.5*x))};
+    
+	\end{axis}
+	\end{tikzpicture}
+  \caption{The plots of $x_a$ and $x_b$}
+  \label{fig:two_cp_plot}
+\end{figure}%
+
+\section{Normal Modes: The General Case}
+
+What if for a certain system it is not as simple to deduce what the normal mode frequencies are? In that case we have to assume solutions of the same
+frequency and work backwards to find for what values of that frequency and what values of amplitude those solutions are valid. If we try this for
+the coupled pendulum, ie. set $x_a = C\cos{\omega t}$ and $x_b = C'\cos{\omega t}$ and substitute into equations \ref{equation:two_cp_pendulums_1}
+and \ref{equation:two_cp_pendulums_2}, we get
+
+\begin{align}
+\label{equation:lin_eq_c}
+(-\omega^2 + \omega_0^2 + \omega_c^2)C - \omega_0^2C' &= 0\\
+\label{equation:lin_eq_c_2}
+-\omega_c^2C + (-\omega^2 + \omega_0^2 + \omega_c^2)C' &= 0
+\end{align}
+
+If this system of linear equations in $C$ and $C'$ is to have a non trivial solution, it must be linearly dependent, ie.
+
+\begin{equation*}
+\begin{vmatrix}
+-\omega^2 + \omega_0^2 + \omega_c^2 & \omega_0^2 \\
+-\omega_c^2 & -\omega^2 + \omega_0^2 + \omega_c^2 
+\end{vmatrix}
+\end{equation*}
+
+This is a quadratic equation in $\omega^2$, and after a bit of work we obtain 
+
+\begin{align*}
+\omega &= \omega_0\\
+\omega &= \sqrt{\omega_0^2 + 2\omega_c^2}
+\end{align*}
+
+substituting these values into equations \ref{equation:lin_eq_c} and \ref{equation:lin_eq_c_2}, we get
+
+\begin{equation*}
+\frac{C}{C'} = 1 or \frac{C}{C'} = -1
+\end{equation*}
+
+which agrees with our original result.
 
 
 
