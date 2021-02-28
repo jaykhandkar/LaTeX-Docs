@@ -1,5 +1,6 @@
 \documentclass[11pt]{article}
 
+\usepackage{tocbibind}
 \usepackage{amsmath}
 \usepackage{amsfonts}
 \usepackage{wrapfig}
@@ -978,8 +979,7 @@ these into our response, finally we get
 \end{equation*}
 
 for $t>0s$. Is this expected? We have one term of the form $e^{-2000t}$, our forcing function and one term of the form $e^{-3092}$, our natural
-response, and so everything checks out. Interestingly, we can find this response in just 3 or 4 steps using Laplace and Fourier transforms, without
-even having to write down a single differential equation.
+response, and so everything checks out.
 
 \end{tcolorbox}
 
@@ -1218,7 +1218,7 @@ These are the standard expressions one may find in any datasheet. The output wav
 \end{figure}
 
 \color{blue}
-\section{Second Order Circuits}
+\section{Second Order Circuits - RLC}
 \color{black}
 
 Let us now consider circuits governed by a second order differential equation, those containing more than one capacitor and inductor. The 
@@ -1544,7 +1544,7 @@ The response is plotted in figure \ref{fig:critical_plot}.
 
 \begin{tcolorbox}[colback=SkyBlue!5, colframe=SkyBlue!75!black, title=\textbf{Example 3.2}, breakable]
 
-Find a value of $R_1$ such that the circuit in figure \ref{fig:critical_parallel_rlc} will be characterized by a critically damped response for $t>0s$, and a value of $R_2$ such that $v(0) = 2\si{\volt}$
+Find a value of $R_1$ such that the circuit in figure \ref{fig:critical_parallel_rlc_example} will be characterized by a critically damped response for $t>0s$, and a value of $R_2$ such that $v(0) = 2\si{\volt}$
 
 \begin{figure}[H]
 \centering
@@ -1555,7 +1555,7 @@ Find a value of $R_1$ such that the circuit in figure \ref{fig:critical_parallel
     \draw (6,2) -- ++(0,-2) -- ++(-6,0);
 \end{circuitikz}
 \caption{Circuit reduces to a parallel RLC after the switch is thrown}
-\label{fig:critical_parallel_rlc}
+\label{fig:critical_parallel_rlc_example}
 \end{figure}
 
 At $t = 0^-$, the current source is on and the inductor may be treated as a short. Thus, 
@@ -1697,7 +1697,7 @@ is plotted in figure \ref{fig:underdamp_plot_example}.\\~\\
 Let us now plot a response characterized by
 
 \begin{equation*}
-v(t) = e^{-0.5x}\cos{10x}
+v(t) = e^{-0.5t}\cos{10t}
 \end{equation*}
 \\~\\
 which is plotted in figure \ref{fig:underdamp_oscill} and shows much sharper oscillatory behaviour.\\ If $\alpha$ is $0$, corresponding to an infinitely large resistance, the response is an undamped sinusoid of constant amplitude. In such a case, we provide the circuit with some initial
@@ -1746,6 +1746,85 @@ are left with none.
   \label{fig:underdamp_oscill}
 \end{figure}%
 
+\begin{tcolorbox}[colback=BurntOrange!5, colframe=BurntOrange!75!black, title=\textbf{Example 3.3}, breakable]
+
+Determine $i_L(t)$ for the circuit of Fig.\ref{fig:underdamped_parallel_rlc_example} and plot the waveform.
+
+\begin{figure}[H]
+\centering
+\begin{circuitikz}[american]
+    \draw (0,0) to [I, l=$3u(-t)\si{\ampere}$, fill=red] ++(0,4) -- ++(2,0) node (a) {} to [C, l^=$\frac{1}{240}\si{\farad}$,*-*, v=$\color{red}v_c$, i=$\color{red}i_C$, voltage shift=1.0] ++(0,-4);
+    \draw (a) -- ++(2,0) node (b) {} to [R=48<\ohm>, *-*] ++(0,-2) to [cute inductor, l=$10\si{\henry}$, *-*, i=$\color{red}i_L$] ++(0,-2);
+    \draw (b) -- ++(3,0) to [R=100<\ohm>, i=$\color{red}i_R$] ++(0,-4) to [short] (0,0);
+    \draw ($(b)+(1.5,0)$) to [closing switch, l=${t=0s}$,*-*] ++(0,-2) -- ++(-1.5,0);
+\end{circuitikz}
+\caption{}
+\label{fig:underdamped_parallel_rlc_example}
+\end{figure}
+
+At $t=0$, both the current source and $48\si{\ohm}$ resistor are removed. We are then left with a parallel RLC with $\alpha = 1.2s^{-1}$ and
+$\omega_0 = 4.899\si{\radian\per\second}$ Since $\alpha < \omega_0$, the circuit is \textit{underdamped}, and the response is
+
+\begin{equation*}
+i_L(t) = e^{-\alpha t}(B_1\cos{\omega_d t} + B_2\sin{\omega_d t})
+\end{equation*}
+
+with $\omega_d = \sqrt{\omega_0^2 - \alpha^2} = 4.750\si{\radian\per\second}$.\\
+At $t=0^-$, we may replace the inductor with a short circuit and the capacitor with an open circuit, the result is $i_L(0^-) = 2.027\si{\ampere}$
+and $v_C(0^-) = 97.30\si{\volt}$ and these are also their values at $t=0^+$. The condition on $i_L(0)$ gives $B_1 = 2.027\si{\ampere}$. To
+determine the other constant,
+
+\begin{align*}
+\frac{di_L}{dt} = e^{-\alpha t}(-B_1\omega_d\sin{\omega_d t} + B_2\omega_d\cos{\omega_d t}) - \alpha e^{-\alpha t}(B_1\cos{\omega_d t} + B_2\sin{\omega_d t})\\
+\Rightarrow v_L(0) = L\frac{di_L}{dt}\Biggr|_{t=0s} = 97.30\si{\volt}
+\end{align*}
+
+This gives $B_2 = 2.561 \si{\ampere}$ and hence the response is
+
+\begin{equation*}
+i_L(t) = e^{-1.2 t}(2.027\cos{4.750 t} + 2.561\sin{4.750 t})
+\end{equation*}
+
+This response is plotted in Fig.\ref{fig:underdamp_plot_example_2}.
+
+\begin{figure}[H]
+	\centering
+  \begin{tikzpicture}
+	\begin{axis}[
+        enlarge x limits = 1,
+        grid = major,
+        xtick distance = 1,
+        ytick distance = 1,
+        axis lines = middle,
+		x label style = {at={(axis description cs:1,0.5)},anchor=west},
+		y label style = {at={(axis description cs:0.111,1)},anchor=south},
+    	xlabel = $t$,
+    	ylabel = {$i_L(t)$},
+        ymin = -2.25, ymax = 2.25,
+        xmin=-0.5, xmax=4
+	]
+    
+    \addplot[
+        color = RubineRed,
+        samples = 100,
+        domain = 0:4
+    ]{exp(-1.2*x)*(2.561*sin(deg(4.750*x)) + 2.027*cos(deg(4.750)))};
+
+	%following code is just a way to label zero for middle axis
+	\node[
+    anchor=north east,
+    outer sep=.5*\pgflinewidth+.5*\pgfkeysvalueof{/pgfplots/major tick length},
+    %draw,green% to show the border of the node
+    ]
+    at({xticklabel* cs:0}-|{yticklabel* cs:0})
+    {\pgfmathprintnumber{0}};
+	\end{axis}
+	\end{tikzpicture}
+  \caption{The response for the example}
+  \label{fig:underdamp_plot_example_2}
+\end{figure}%
+
+\end{tcolorbox}
 
 
 
