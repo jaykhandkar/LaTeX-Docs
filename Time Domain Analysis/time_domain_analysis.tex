@@ -1,5 +1,6 @@
 \documentclass[11pt]{article}
 
+\usepackage{bm}
 \usepackage{tocbibind}
 \usepackage{amsmath}
 \usepackage{amsfonts}
@@ -1225,7 +1226,7 @@ Let us now consider circuits governed by a second order differential equation, t
 response shall vary according to the value of the components $R$, $L$ and $C$. We will first consider parallel RLC circuits.
 
 \color{blue}
-\subsection{The Parallel RLC}
+\subsection{The Source-Free Parallel RLC}
 \color{black}
 
 \begin{figure}[H]
@@ -1825,6 +1826,58 @@ This response is plotted in Fig.\ref{fig:underdamp_plot_example_2}.
 \end{figure}%
 
 \end{tcolorbox}
+
+\color{blue}
+\subsection{The Source-Free Series RLC}
+\color{black}
+
+\begin{figure}[H]
+\centering
+\begin{circuitikz}[american]
+    \draw (0,0) to [R, l=$R$] ++(0,3) to [C, l=$C$, v=$v_C$, i=$i$] ++(4,0) to [cute inductor, l=$L$, v=$v_L$] ++(0,-3) -- (0,0);
+\end{circuitikz}
+\caption{The source-free series RLC}
+\label{fig:src_free_series_rlc}
+\end{figure}
+
+The methods to find the response for a series RLC is exactly the same as that of the parallel RLC, but with a slightly different expression for
+$\alpha$. Applying Kirchhoff's voltage law in circuit \ref{fig:src_free_series_rlc}, 
+
+\begin{equation*}
+L\frac{di}{dt} + Ri + \frac{1}{C}\int_{t_0}^{t} i\,dt' - v_C(t_0) = 0
+\end{equation*}
+
+or
+
+\begin{equation}
+\frac{d^2i}{dt^2} + \frac{R}{L}\frac{di}{dt} + \frac{1}{LC}i = 0
+\end{equation}
+
+and so for the series RLC, $\alpha = \frac{R}{2L}$. The key equations for the series and parallel RLC circuits are summarised in Table \ref{table:natural_rlc_eqns}.
+
+\begin{table}[!h]
+\begin{center}
+ \colorbox{BurntOrange!5}{\begin{tabular}{||c c c c c c||} 
+ \hline
+ \textbf{Type} & \textbf{Condition} & \textbf{Criteria} & $\bm{\alpha}$ & $\bm{\omega_0}$ & \textbf{Response}\\ [0.5ex] 
+ \hline\hline
+ Parallel &  &  & $\frac{1}{2RC}$ &  & \\ [5ex]
+  & Overdamped & $\alpha > \omega_0$ &  & $\frac{1}{\sqrt{LC}}$ &  $A_1e^{s_1t} + A_2e^{s_2t}$\\[5ex]
+ Series &  &  & $\frac{R}{2L}$ &  & where $s_{1,2}= -\alpha \pm \sqrt{\alpha^2 - \omega_0^2}$\\ [5ex]
+ \hline
+ Parallel &  &  & $\frac{1}{2RC}$ &  & \\ [5ex]
+  & Critically damped & $\alpha = \omega_0$ &  & $\frac{1}{\sqrt{LC}}$ &  $e^{-\alpha t}(A_1t + A_2)$\\[5ex]
+ Series &  &  & $\frac{R}{2L}$ &  & \\ [5ex]
+ \hline
+  Parallel &  &  & $\frac{1}{2RC}$ &  & \\ [5ex]
+  & Underdamped & $\alpha < \omega_0$ &  & $\frac{1}{\sqrt{LC}}$ &  $e^{-\alpha t}(A_1\cos{\omega_dt} + A_2\sin{\omega_dt})$\\[5ex]
+ Series &  &  & $\frac{R}{2L}$ &  & where $\omega_d = \sqrt{\omega_0^2 - \alpha^2}$\\ [5ex]
+ \hline
+\end{tabular}}
+\caption{The various conditions for the type of response}
+\label{table:natural_rlc_eqns}
+\end{center}
+\end{table}
 
 
 
